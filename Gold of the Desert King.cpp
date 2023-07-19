@@ -6,10 +6,10 @@
 /*                         Author       : Song HY  & Zhang X                        */
 /*                                                                                  */
 /*                         Start time   : 2021.07.10                                */
-/*                         End time     : 2023.07.10                               */
+/*                         End time     : 2023.07.10                                */
 /*                                                                                  */
 /*                         School       : Nanjing Xiaozhuang University             */
-/*                         Department   : Information Engineering                  */
+/*                         Department   : Information Engineering                   */
 /*                                                                                  */
 /*                         Major        : Artificial Intelligence                   */
 /*                                                                                  */
@@ -17,13 +17,13 @@
 
 /************************************************************************************/
 /*                                                                                  */
-/*                         项目名称：沙漠黄金                                        */
-/*                         文件名称：沙漠黄金.cpp                                    */
-/*                         项目作者：宋韩尧、张  祥                                  */
-/*                         学    校：南京晓庄学院                                    */
-/*                         院    系：信息工程学院、人工智能学院                       */
-/*                                                                                   */
-/*                         起止时间：2023.07.10                                       */
+/*                         项目名称：沙漠黄金                                       */
+/*                         文件名称：沙漠黄金.cpp                                   */
+/*                         项目作者：宋韩尧、张  祥                                 */
+/*                         学    校：南京晓庄学院                                   */
+/*                         院    系：信息工程学院、人工智能学院                     */
+/*                                                                                  */
+/*                         起止时间：2023.07.10                                     */
 /*                                                                                  */
 /************************************************************************************/
 
@@ -61,8 +61,8 @@ struct GROUP {
 	int ID = 0;                // 队名
 	int alive = 1;             // 是否存活
 	int alive_day = 0;         // 存活天数
-	int money = 1000;          // 剩余的金钱
-	int residual_load = 1000;  // 剩余的磅重
+	int money = 10000;          // 剩余的金钱
+	int residual_load = 10000;  // 剩余的磅重
 	int water = 0;             // 水
 	int food = 0;              // 食物
 	int tent = 0;              // 帐篷
@@ -73,16 +73,43 @@ struct GROUP {
 	string Bei_zhu = " ";      // 备注
 };
 
-GROUP group[100];        // 预设100个队伍
-int weather_list[25][5]; // 第一维度为天数，第二维度为各地点的天气
+GROUP group[100];            // 预设100个队伍
+int weather_list[25][5] = {  // 第一维度为天数，第二维度为各地点的天气
+	{ 0 , 1 , 2 , 3 , 0 } ,
+	{ 0 , 1 , 2 , 3 , 0 } ,
+	{ 0 , 1 , 2 , 3 , 0 } ,
+	{ 0 , 1 , 2 , 3 , 0 } ,
+	{ 0 , 1 , 2 , 3 , 0 } ,
+	{ 0 , 1 , 2 , 3 , 0 } ,
+	{ 0 , 1 , 2 , 3 , 0 } ,
+	{ 0 , 1 , 2 , 3 , 0 } ,
+	{ 0 , 1 , 2 , 3 , 0 } ,
+	{ 0 , 1 , 2 , 3 , 0 } ,
+	{ 0 , 1 , 2 , 3 , 0 } ,
+	{ 0 , 1 , 2 , 3 , 0 } ,
+	{ 0 , 1 , 2 , 3 , 0 } ,
+	{ 0 , 1 , 2 , 3 , 0 } ,
+	{ 0 , 1 , 2 , 3 , 0 } ,
+	{ 0 , 1 , 2 , 3 , 0 } ,
+	{ 0 , 1 , 2 , 3 , 0 } ,
+	{ 0 , 1 , 2 , 3 , 0 } ,
+	{ 0 , 1 , 2 , 3 , 0 } ,
+	{ 0 , 1 , 2 , 3 , 0 } ,
+	{ 0 , 1 , 2 , 3 , 0 } ,
+	{ 0 , 1 , 2 , 3 , 0 } ,
+	{ 0 , 1 , 2 , 3 , 0 } ,
+	{ 0 , 1 , 2 , 3 , 0 } ,
+	{ 0 , 1 , 2 , 3 , 0 } ,
+};
+
 int group_num = 0;       // 队伍数量
 
 // 天气部分
-int  Weather(int day, int locations);       // 天气生成
-void Weather_show(int day);                 // 当天天气输出(当天全部地点)
+int  Weather(int day, int locations);                // 天气生成
+void Weather_show(int day);                          // 当天天气输出(当天全部地点)
 void Weather_location_show(int day , int locations); // 当天天气输出(带地点)
-void Weather_list();                        // 天气列表生成
-void Weather_list_show();                   // 天气列表输出
+void Weather_list();                                 // 天气列表生成
+void Weather_list_show();                           // 天气列表输出
 // 商店系统
 void Base_camp_store(int num);    // 大本营购物
 void Village_store(int ID);       // 村庄购物
@@ -90,11 +117,11 @@ void Oasis_water_intake(int ID);  // 绿洲取水
 void Tomb_card(int ID);           // 王陵抽卡
 void Struck_gold(int ID);         //大山挖黄金
 // 行动系统
-void Move_Action(int ID);              // 行动
-void Weather_action(int ID , int day);      // 天气行动
+void Move_Action(int ID);                // 行动
+void Weather_action(int ID , int day);   // 天气行动
 // 游戏系统
 void Game_start();                // 游戏开始
-void Game_going(int day);                // 游戏进行
+void Game_going(int day);         // 游戏进行
 void Game_end();                  // 游戏结束
 
 
@@ -161,23 +188,26 @@ void Game_end(){
 
 // 天气行动
 void Weather_action(int ID , int day){
-	cout << "您好，第" << ID+1 << "队！您目前在" << group[ID].locations << "，今天的天气是：";
+	cout << "您好，第" << ID+1 << "队！您目前在" << group[ID].locations << "，今天的天气是：" << endl ;
 	// 判断天气
 	int k = 0;
 	string locations = group[ID].locations;
 	switch (locations[0]) {
-	case 'S': k = 0; break;
-	case 'W': k = 1; break;
-	case 'L': k = 2; break;
-	case 'C': k = 3; break;
-	case 'M': k = 4; break;
+	case 'S': k = 0; break;   // 沙漠
+	case 'W': k = 1; break;   // 王陵
+	case 'L': k = 2; break;   // 绿洲
+	case 'C': k = 3; break;   // 村庄
+	case 'M': k = 4; break;   // 大山
 	}
 	Weather_location_show(day , k);
 	switch (weather_list[day][k]){
 		case 0:
 			cout << "今天需上交内容如下表。请选择其中一个选项上交！" << endl;
-			cout << " | 选项 | 水 | 食物 | 指南针 | 帐篷 | " << endl ;
-			cout << " |  1   | 1  |  1   |   0    |  0   | " << endl ;
+			cout << " | 选项   \t| 水     \t| 食物   \t| 指南针 \t| 帐篷   \t| " << endl ;
+			cout << " |  1     \t| 1      \t|  1     \t|   0    \t|  0     \t| " << endl ;
+			cout << "您拥有的物资如下：" << endl;
+			cout << " |        \t| " << group[ID].water << "     \t|  " << group[ID].food << "     \t|   ";
+			cout << group[ID].compass << "     \t|  " << group[ID].tent << "     \t| " << endl;
 			cin >> k;
 			group[ID].food -= 1;
 			group[ID].water -= 1;
@@ -188,8 +218,11 @@ void Weather_action(int ID , int day){
 			break;
 		case 1:
 			cout << "今天需上交内容如下表。请选择其中一个选项上交！" << endl;
-			cout << " | 选项 | 水 | 食物 | 指南针 | 帐篷 | " << endl ;
-			cout << " |  1   | 3  |  1   |   0    |  0   | " << endl ;
+			cout << " | 选项   \t| 水     \t| 食物   \t| 指南针 \t| 帐篷   \t| " << endl ;
+			cout << " |  1     \t| 3      \t|  1     \t|   0    \t|  0     \t| " << endl ;
+			cout << "您拥有的物资如下：" << endl;
+			cout << " |        \t| " << group[ID].water << "     \t|  " << group[ID].food << "     \t|   ";
+			cout << group[ID].compass << "     \t|  " << group[ID].tent << "     \t| " << endl;
 			cin >> k;
 			group[ID].food -= 1;
 			group[ID].water -= 3;
@@ -200,10 +233,13 @@ void Weather_action(int ID , int day){
 			break;
 		case 2:
 			cout << "今天需上交内容如下表。请选择其中一个选项上交！" << endl;
-			cout << " | 选项 | 水 | 食物 | 指南针 | 帐篷 | " << endl ;
-			cout << " |  1   | 4  |  10  |   0    |  0   | " << endl ;
-			cout << " |  2   | 2  |  5   |   1    |  0   | " << endl ;
-			cout << " |  3   | 1  |  1   |   0    |  1   | " << endl ;
+			cout << " | 选项   \t| 水     \t| 食物   \t| 指南针 \t| 帐篷   \t| " << endl ;
+			cout << " |  1     \t| 4      \t|  10    \t|   0    \t|  0     \t| " << endl;
+			cout << " |  2     \t| 2      \t|  5     \t|   1    \t|  0     \t| " << endl;
+			cout << " |  3     \t| 1      \t|  1     \t|   0    \t|  1     \t| " << endl ;
+			cout << "您拥有的物资如下：" << endl;
+			cout << " |        \t| " << group[ID].water << "     \t|  " << group[ID].food << "     \t|   ";
+			cout << group[ID].compass << "     \t|  " << group[ID].tent << "     \t| " << endl;
 			cin >> k;
 			if(k == 1){
 				group[ID].food -= 10;
@@ -240,10 +276,13 @@ void Weather_action(int ID , int day){
 			break;
 		case 3:
 			cout << "今天需上交内容如下表。请选择其中一个选项上交！" << endl;
-			cout << " | 选项 | 水 | 食物 | 指南针 | 帐篷 | " << endl ;
-			cout << " |  1   | 8  |  10  |   0    |  0   | " << endl ;
-			cout << " |  2   | 4  |  5   |   1    |  0   | " << endl ;
-			cout << " |  3   | 3  |  1   |   0    |  1   | " << endl ;
+			cout << " | 选项   \t| 水     \t| 食物   \t| 指南针 \t| 帐篷   \t| " << endl ;
+			cout << " |  1     \t| 8      \t|  10    \t|   0    \t|  0     \t| " << endl;
+			cout << " |  2     \t| 4      \t|  5     \t|   1    \t|  0     \t| " << endl;
+			cout << " |  3     \t| 3      \t|  1     \t|   0    \t|  1     \t| " << endl ;
+			cout << "您拥有的物资如下：" << endl;
+			cout << " |        \t| " << group[ID].water << "     \t|  " << group[ID].food << "     \t|   ";
+			cout << group[ID].compass << "     \t|  " << group[ID].tent << "     \t| " << endl;
 			cin >> k;
 			if(k == 1){
 				group[ID].food -= 10;
@@ -310,17 +349,17 @@ void Weather_show(int day) {
 	cout << "第" << day + 1 << "天的天气情况如下：" << endl;
 	for (int i = 0; i < 5; i++) {
 		switch (i) {
-		case 0: cout << "沙漠       "; break;
-		case 1: cout << "王陵       "; break;
-		case 2: cout << "绿洲       "; break;
-		case 3: cout << "村庄       "; break;
-		case 4: cout << "大山       "; break;
+		case 0: cout << "沙漠：\t"; break;
+		case 1: cout << "王陵：\t"; break;
+		case 2: cout << "绿洲：\t"; break;
+		case 3: cout << "村庄：\t"; break;
+		case 4: cout << "大山：\t"; break;
 		}
 		switch (weather_list[day][i]) {
-		case 0: cout << "晴天       "; break;
-		case 1: cout << "高温       "; break;
-		case 2: cout << "沙尘暴     "; break;
-		case 3: cout << "高温沙尘暴 "; break;
+		case 0: cout << "晴天      \t"; break;
+		case 1: cout << "高温      \t"; break;
+		case 2: cout << "沙尘暴    \t"; break;
+		case 3: cout << "高温沙尘暴\t"; break;
 		}
 	}
 	cout << endl;
@@ -334,7 +373,7 @@ void Weather_location_show(int day, int locations){
 	case 1: cout << "王陵：\t";k=1; break;
 	case 2: cout << "绿洲：\t";k=2; break;
 	case 3: cout << "村庄：\t";k=3; break;
-	case 4: cout << "大山：\t"; k = 4; break;
+	case 4: cout << "大山：\t";k=4; break;
 	}
 	switch (weather_list[day][k]) {
 	case 0: cout << "晴天      \t"; break;
@@ -444,7 +483,7 @@ void Village_store(int ID) {
 
 // 大本营购物
 void Base_camp_store(int num) {
-	for (int i = 1; i <= num; i++) {
+	for (int i = 0; i < num; i++) {
 		cout << "请输入第" << i << "组购买的物资！" << endl;
 		group[i].ID = i;
 

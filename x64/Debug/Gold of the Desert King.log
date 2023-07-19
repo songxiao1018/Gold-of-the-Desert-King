@@ -1,4 +1,4 @@
 ﻿  Gold of the Desert King.cpp
-F:\code manger\Gold of the Desert King\Gold of the Desert King\Gold of the Desert King.cpp(116,13): warning C4244: “=”: 从“time_t”转换到“int”，可能丢失数据
-F:\code manger\Gold of the Desert King\Gold of the Desert King\Gold of the Desert King.cpp(279,21): warning C4244: “=”: 从“time_t”转换到“int”，可能丢失数据
-  Gold of the Desert King.vcxproj -> F:\code manger\Gold of the Desert King\Gold of the Desert King\x64\Debug\Gold of the Desert King.exe
+F:\code manger\Gold of the Desert King\Gold of the Desert King.cpp(439,13): warning C4244: “=”: 从“time_t”转换到“int”，可能丢失数据
+F:\code manger\Gold of the Desert King\Gold of the Desert King.cpp(602,21): warning C4244: “=”: 从“time_t”转换到“int”，可能丢失数据
+  Gold of the Desert King.vcxproj -> F:\code manger\Gold of the Desert King\x64\Debug\Gold of the Desert King.exe
