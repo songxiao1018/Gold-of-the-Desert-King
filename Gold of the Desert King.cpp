@@ -53,32 +53,36 @@
 /*                                                                                  */
 /************************************************************************************/
 
-#include <iostream>
 #include <time.h>
-#include <Windows.h>
-
-
+#include <iostream>
 using namespace std;
 
 struct GROUP {
     int ID = 0;                // 队名
     int alive = 1;             // 是否存活
     int miss = 0;              // 是否迷路
+    int back = 0;              // 是否回到大本营
+    int rank = -1;             // 排名
+    int integral = 1000;       // 积分
     int alive_day = 0;         // 存活天数
-    int money = 100000;          // 剩余的金钱
-    int residual_load = 100000;  // 剩余的磅重
-    int water = 0;             // 水
-    int food = 0;              // 食物
-    int tent = 0;              // 帐篷
-    int compass = 0;           // 指南针
+    int money = 10000;          // 剩余的金钱
+    int residual_load = 10000;  // 剩余的磅重
+    int water = 1000;             // 水
+    int food = 1000;              // 食物
+    int tent = 1000;              // 帐篷
+    int compass = 1000;           // 指南针
     string locations = "D";    // 位置
     int gold = 0;              // 黄金
-    int card = 0;              // 王陵抽取卡牌编号
+    int card = -1;              // 王陵抽取卡牌编号
     string Bei_zhu = " ";      // 备注
 };
 
 GROUP group[100];            // 预设100个队伍
+
+
 int group_num = 0;       // 队伍数量
+int group_back[100];
+int game_ranking = 0;
 int weather_list[25][5] = {  // 第一维度为天数，第二维度为各地点的天气
     { 0 , 1 , 2 , 3 , 0 } ,
     { 0 , 1 , 2 , 3 , 0 } ,
@@ -107,41 +111,37 @@ int weather_list[25][5] = {  // 第一维度为天数，第二维度为各地点
     { 0 , 1 , 2 , 3 , 0 } ,
 };
 
-// 天气部分
-int  Weather(int day, int locations);                // 天气生成
-void Weather_show(int day);                          // 当天天气输出(当天全部地点)
-void Weather_location_show(int day, int locations); // 当天天气输出(带地点)
-void Weather_list();                                 // 天气列表生成
-void Weather_list_show();                           // 天气列表输出
 // 商店系统
 void Base_camp_store(int num);    // 大本营购物
 void Village_store(int ID);       // 村庄购物
+// 天气部分
+int   Weather(int day, int locations);                // 天气生成
+void Weather_list();                                 // 天气列表生成
+void Weather_list_show();                           // 天气列表输出
+void Weather_show(int day);                          // 当天天气输出(当天全部地点)
+void Weather_location_show(int day, int locations ); // 当天天气输出(带地点)
 // 游戏事件
 void Oasis_water_intake(int ID);  // 绿洲取水
 void Tomb_card(int ID);           // 王陵抽卡
 void Struck_gold(int ID);         //大山挖黄金
-// 游戏清算
-void Game_liquidation(int ID);    // 结算各队物资剩余
 // 行动系统
 void Move_Action(int ID);                // 行动
 void Weather_action(int ID, int day);    // 天气行动
 // 游戏系统
 void Game_start();                // 游戏开始
 void Game_going(int day);         // 游戏进行
-void Game_end();                  // 游戏结束
+int  Game_end();                  // 游戏结束
 // 系统设置
 void Welcome_interface();         // 欢迎界面
-void Game_rule_show();            // 游戏规则输出
 void Player_init();               // 游戏人数录入
 void Team_supplies();             // 各队物资输出
+void Team_supplies_one(int ID);   // 当前队伍数据输出
+void Team_information();          // 各队信息
+void Team_Integral();             // 计算各队积分
 
 int main() {
     // 欢迎界面
     Welcome_interface();
-
-    
-
-    
 
     return 0;
 }
@@ -183,7 +183,8 @@ void Player_init() {
 
     cout << "请输入队伍数量：";
     cin >> group_num;
-    //system("cls");
+    game_ranking = 0;
+    system("cls");
 }
 
 // 各队物资输出     // 显示各队物资剩余，未变更数据信息
@@ -202,7 +203,75 @@ void Team_supplies(){
     cout << "请管理员确认后按1，并回车。";
     int k;
     cin >> k;
-    //system("cls");
+    system("cls");
+}
+
+// 当前队伍数据输出
+void Team_supplies_one(int ID){
+    printf("/***************************************************************************************/\n");
+    printf("/*                                                                                     */\n");
+    printf("/*-----------------------------------第%2d队物资信息------------------------------------*/\n", ID + 1);
+    printf("/*                                                                                     */\n");
+    printf("/*          |  队名  | 水 | 食物 | 帐篷 | 指南针 | 黄金 | 零钱钱 | 剩余磅重 |          */\n");
+    printf("/*          | 第%2d队 | %2d |  %2d  |  %2d  |   %2d   ", ID + 1, group[ID].water, group[ID].food, group[ID].tent, group[ID].compass);
+    printf("|  %2d  |  %4d  |   %4d   |          */\n", group[ID].gold, group[ID].money, group[ID].residual_load);
+    printf("/*                                                                                     */\n");
+    printf("/***************************************************************************************/\n");
+}
+
+// 各队信息
+void Team_information(){
+    printf("/***************************************************************************************/\n");
+    printf("/*                                                                                     */\n");
+    printf("/*--------------------------------第    五     阶    段--------------------------------*/\n");
+    printf("/*                                                                                     */\n");
+    printf("/*                   所有队伍已到达大本营或葬身沙海，本轮游戏结束！                    */\n");
+    printf("/*                                                                                     */\n");
+    printf("/*-----------------------------------各团队物资清算------------------------------------*/\n");
+    printf("/*                                                                                     */\n");
+    printf("/*          |  队名  |  水  |  食物  | 帐篷 | 指南针 | 黄金 | 零钱钱 | 排名 |          */\n");
+
+    for (int i = 0; i < group_num; i++) {
+        printf("/*          | 第%2d队 |  %2d  |   %2d   |  %2d  |", i + 1, group[i].water, group[i].food, group[i].tent);
+        printf("   %2d   |  %2d  |  %4d  |  %2d  |          */\n", group[i].compass, group[i].gold, group[i].money, group[i].rank + 1);
+    }
+
+    printf("/*                                                                                     */\n");
+    printf("/***************************************************************************************/\n");
+
+    int k;
+    cout << "请输入1，已确认";
+    cin >> k;
+}
+
+// 计算各队积分
+void Team_Integral(){
+    for (int i = 0; i < group_num; i++) {
+        group[i].integral = group[i].money;
+
+        if (group[i].rank == -1) {
+            group[i].integral = 0;
+        }
+        group[i].integral += group[i].gold * 1000 * group[i].rank;
+    }
+
+    system("cls");
+
+    printf("/***************************************************************************************/\n");
+    printf("/*                                                                                     */\n");
+    printf("/*--------------------------------游戏结束各队积分如下---------------------------------*/\n");
+    printf("/*                                                                                     */\n");
+    printf("/*                            |    队名    |     积分     |                            */\n");
+    for (int i = 0; i < group_num; i++) {
+        printf("/*                            |   第%2d队   |   %8d   |                            */\n", i + 1, group[i].integral);
+    }
+    printf("/*                                                                                     */\n");
+    printf("/***************************************************************************************/\n");
+
+    cout << "请管理员输入1，已确认";
+    int k;
+    cin >> k;
+
 }
 
 // 欢迎界面        // 选择游戏模式
@@ -239,8 +308,10 @@ void Welcome_interface(){
     printf("/*                           本项目由宋韩尧、张祥联合研发                              */\n");
     printf("/*                                                                                     */\n");
     printf("/***************************************************************************************/\n");
+    cout << "请输入您的选择：";
     int k;
     cin >> k;
+    system("cls");
     switch (k) {
     case 1:
         break;
@@ -254,23 +325,13 @@ void Welcome_interface(){
     default:
         break;
     }
-    //system("cls");
-}
-
-// 游戏规则输出
-void Game_rule_show(){
-
-}
-
-// 结算各队物资剩余
-void Game_liquidation(int ID) {
-    cout << "";
+    system("cls");
 }
 
 // 游戏开始
 void Game_start() {
     // 生成全部天气
-    //Weather_list();
+    Weather_list();
 
     // 输出全部天气
     Weather_list_show();
@@ -283,16 +344,26 @@ void Game_start() {
 
     // 游戏进行  25天
     for (int i = 0; i < 25; i++) {
+        if (Game_end() == 1) {
+            break;
+        }
+
         Game_going(i);
+
     }
+
+    // 输出所有队伍状态
+    Team_information();
+
+    Team_Integral();
 }
 
 // 游戏进行
 void Game_going(int day) {
     // 每队移动
     for (int i = 0; i < group_num; i++) {
-        // 判断是否存活  若以死亡则跳过该队
-        if (group[i].alive == 0) {
+        //           存活                    回到大本营 
+        if (group[i].alive == 0 || group[i].back == 1) {
             continue;
         }
 
@@ -312,72 +383,67 @@ void Game_going(int day) {
 
     // 各队解决天气问题
     for (int i = 0; i < group_num; i++) {
+        //           存活                    回到大本营 
+        if (group[i].alive == 0 || group[i].back == 1) {
+            continue;
+        }
+
         // 天气输出 当天
         Weather_show(day);
 
-        // 判断是否存活  若以死亡则跳过该队
-        if (group[i].alive == 0) {
-            continue;
-        }
 
         // 应对天气
         Weather_action(i, day);
 
-        //system("cls");
     }
-
-    //system("cls");
 
     // 判断是否在绿洲，并安排可以取水队伍取水
     for (int i = 0; i < group_num; i++) {
-        //           死亡                    不在绿洲                         磅重不够
-        if (group[i].alive == 0 || group[i].locations[0] != 'L' || group[i].residual_load < 50) {
+        //           死亡                    不在绿洲                         磅重不够                        回到大本营
+        if (group[i].alive == 0 || group[i].locations[0] != 'L' || group[i].residual_load < 50 || group[i].back == 1) {
             continue;
         }
         Oasis_water_intake(i);
     }
 
-    //system("cls");
-
     // 判断是否在村庄，并安排可以购买物资的队伍购物
     for (int i = 0; i < group_num; i++) {
-        //           死亡                    不在村庄                         钱不够                  磅重不够
-        if (group[i].alive == 0 || group[i].locations[0] != 'C' || group[i].money < 50 || group[i].residual_load < 10) {
+        //           死亡                    不在村庄                         钱不够                  磅重不够                        回到大本营
+        if (group[i].alive == 0 || group[i].locations[0] != 'C' || group[i].money < 50 || group[i].residual_load < 10 || group[i].back == 1) {
             continue;
         }
         Village_store(i);
     }
 
-    //system("cls");
-
     // 判断是否在大山，并安排可以挖金矿的队伍挖金矿
     for (int i = 0; i < group_num; i++) {
-        //           死亡                    不在大山                         磅重不够
-        if (group[i].alive == 0 || group[i].locations[0] != 'M' || group[i].residual_load < 50) {
+        //           死亡                    不在大山                         磅重不够                        回到大本营
+        if (group[i].alive == 0 || group[i].locations[0] != 'M' || group[i].residual_load < 50 || group[i].back == 1) {
             continue;
         }
         Struck_gold(i);
     }
 
-    //system("cls");
-
     // 判断是否在王陵，并安排可以抽卡的队伍抽卡
     for (int i = 0; i < group_num; i++) {
-        //           死亡                    不在王陵                         钱不够
-        if (group[i].alive == 0 || group[i].locations[0] != 'W' || group[i].money < 100) {
+        //           死亡                    不在王陵                         钱不够                   回到大本营              已抽卡
+        if (group[i].alive == 0 || group[i].locations[0] != 'W' || group[i].money < 100 || group[i].back == 1 || group[i].card != -1) {
             continue;
         }
         Tomb_card(i);
     }
 
-    //system("cls");
-
     Team_supplies();
 }
 
 // 游戏结束
-void Game_end() {
-
+int  Game_end() {
+    for (int i = 0; i < group_num; i++) {
+        if (group[i].alive == 1 && group[i].back == 0) {
+            return 0;
+        }
+    }
+    return 1;
 }
 
 // 天气行动
@@ -408,10 +474,6 @@ void Weather_action(int ID, int day) {
         group[ID].residual_load += 1 * 10;
         group[ID].water -= 1;
         group[ID].residual_load += 1 * 50;
-        if (group[ID].food < 0 || group[ID].water < 0) {
-            cout << "您的队伍未能穿越沙漠，请下次继续努力！";
-            group[ID].alive = 0;
-        }
         break;
     case 1:
         cout << "今天需上交内容如下表。请选择其中一个选项上交！" << endl;
@@ -426,11 +488,6 @@ void Weather_action(int ID, int day) {
         group[ID].residual_load += 1 * 10;
         group[ID].water -= 3;
         group[ID].residual_load += 3 * 50;
-
-        if (group[ID].food < 0 || group[ID].water < 0) {
-            cout << "您的队伍未能穿越沙漠，请下次继续努力！";
-            group[ID].alive = 0;
-        }
         break;
     case 2:
         cout << "今天需上交内容如下表。请选择其中一个选项上交！" << endl;
@@ -450,10 +507,6 @@ void Weather_action(int ID, int day) {
             group[ID].residual_load += 4 * 50;
             cout << "由于您遇到恶劣天气，并且未做好防护措施，您所在的队伍迷路了，需要一个回合找到方向！" << endl;
             group[ID].miss = 1;
-            if (group[ID].food < 0 || group[ID].water < 0) {
-                cout << "您的队伍未能穿越沙漠，请下次继续努力！";
-                group[ID].alive = 0;
-            }
         }
         else if (k == 2 && group[ID].compass > 0) {
             group[ID].food -= 5;
@@ -462,10 +515,6 @@ void Weather_action(int ID, int day) {
             group[ID].residual_load += 2 * 50;
             group[ID].compass -= 1;
             group[ID].residual_load += 1 * 10;
-            if (group[ID].food < 0 || group[ID].water < 0) {
-                cout << "您的队伍未能穿越沙漠，请下次继续努力！";
-                group[ID].alive = 0;
-            }
         }
         else if (k == 3 && group[ID].tent > 0) {
             group[ID].food -= 1;
@@ -474,23 +523,15 @@ void Weather_action(int ID, int day) {
             group[ID].residual_load += 1 * 50;
             group[ID].tent -= 1;
             group[ID].residual_load += 1 * 20;
-            if (group[ID].food < 0 || group[ID].water < 0) {
-                cout << "您的队伍未能穿越沙漠，请下次继续努力！";
-                group[ID].alive = 0;
-            }
         }
         else {
-            cout << "您提供的选项有误或者您没有足够的物资！以按照第一个选项上交！";
+            cout << "您提供的选项有误或者您没有足够的物资！以按照第一个选项上交！" << endl;
             group[ID].food -= 10;
             group[ID].residual_load += 1 * 10;
             group[ID].water -= 4;
             group[ID].residual_load += 4 * 50;
             cout << "由于您遇到恶劣天气，并且未做好防护措施，您所在的队伍迷路了，需要一个回合找到方向！" << endl;
             group[ID].miss = 1;
-            if (group[ID].food < 0 || group[ID].water < 0) {
-                cout << "您的队伍未能穿越沙漠，请下次继续努力！";
-                group[ID].alive = 0;
-            }
         }
         break;
     case 3:
@@ -511,10 +552,6 @@ void Weather_action(int ID, int day) {
             group[ID].residual_load += 8 * 50;
             cout << "由于您遇到恶劣天气，并且未做好防护措施，您所在的队伍迷路了，需要一个回合找到方向！" << endl;
             group[ID].miss = 1;
-            if (group[ID].food < 0 || group[ID].water < 0) {
-                cout << "您的队伍未能穿越沙漠，请下次继续努力！";
-                group[ID].alive = 0;
-            }
         }
         else if (k == 2 && group[ID].compass > 0) {
             group[ID].food -= 5;
@@ -523,10 +560,6 @@ void Weather_action(int ID, int day) {
             group[ID].residual_load += 4 * 50;
             group[ID].compass -= 1;
             group[ID].residual_load += 1 * 10;
-            if (group[ID].food < 0 || group[ID].water < 0) {
-                cout << "您的队伍未能穿越沙漠，请下次继续努力！";
-                group[ID].alive = 0;
-            }
         }
         else if (k == 3 && group[ID].tent > 0) {
             group[ID].food -= 1;
@@ -535,70 +568,93 @@ void Weather_action(int ID, int day) {
             group[ID].residual_load += 3 * 50;
             group[ID].tent -= 1;
             group[ID].residual_load += 1 * 20;
-            if (group[ID].food < 0 || group[ID].water < 0) {
-                cout << "您的队伍未能穿越沙漠，请下次继续努力！";
-                group[ID].alive = 0;
-            }
         }
         else {
-            cout << "您提供的选项有误或者您没有足够的物资！以按照第一个选项上交！";
+            cout << "您提供的选项有误或者您没有足够的物资！以按照第一个选项上交！" << endl;
             group[ID].food -= 10;
             group[ID].residual_load += 10 * 10;
             group[ID].water -= 8;
             group[ID].residual_load += 8 * 10;
             cout << "由于您遇到恶劣天气，并且未做好防护措施，您所在的队伍迷路了，需要一个回合找到方向！" << endl;
             group[ID].miss = 1;
-            if (group[ID].food < 0 || group[ID].water < 0) {
-                cout << "您的队伍未能穿越沙漠，请下次继续努力！";
-                group[ID].alive = 0;
-            }
         }
         break;
     default:
         break;
     }
+
+    if (group[ID].food < 0 || group[ID].water < 0) {
+        cout << "您的队伍未能穿越沙漠，请下次继续努力！" << endl;
+        if (group[ID].food < 0) {
+            group[ID].residual_load -= group[ID].food * 10;
+            group[ID].food = 0;
+        }
+        if (group[ID].water < 0) {
+            group[ID].residual_load -= group[ID].water * 50;
+            group[ID].water = 0;
+        }
+        group[ID].alive = 0;
+        group[ID].back = 1;
+                
+    }
+
+    if (group[ID].alive == 0) {
+        cout << "今天结束！很遗憾你的团队没能成功度过今天。";
+    }
+    else {
+        cout << "今天结束！恭喜你的团队成功度过今天。";
+    }
+    cout << endl << "您拥有的物资如下：" << endl;
+    cout << " | 选项   \t| 水     \t| 食物   \t| 指南针 \t| 帐篷   \t| " << endl;
+    cout << " |        \t| " << group[ID].water << "     \t|  " << group[ID].food << "     \t|   ";
+    cout << group[ID].compass << "     \t|  " << group[ID].tent << "     \t| " << endl;
+    cout << "请输入1，已确认";
+    cin >> k;
+
+    system("cls");
 }
 
 // 行动
 void Move_Action(int ID) {
-printf("/***************************************************************************************/\n");
-printf("/*                                                                                     */\n");
-printf("/*--------------------------------第    三     阶    段--------------------------------*/\n");
-printf("/*                                                                                     */\n");
-printf("/*-----------------------------------各团队移动位置------------------------------------*/\n");
-printf("/*                                                                                     */\n");
-printf("/*      地图简图如下，请各领驼人选择前进方向（输入格子左上角的编号）                   */\n");
-printf("/*                                                                                     */\n");
-printf("/*                   +--+--+--+--+--+--+--+--+--+--+--+--+--+--+--+                    */\n");
-printf("/*                   |M       |S01        |S02     |C01     |S03  |                    */\n");
-printf("/*                   | 大山   |           |        | 村庄   |     |                    */\n");
-printf("/*                   |        +--------+--+--+-----+--------+     |                    */\n");
-printf("/*                   +-----+--+        |S06  |S07           |     |                    */\n");
-printf("/*                   |S04  |   S05     |     |              +-----+                    */\n");
-printf("/*                   |     |        +--+-----+-----+--------+S10  |                    */\n");
-printf("/*                   +-----+        | W            | S09    |     |                    */\n");
-printf("/*                   |C02  +--------+              |-----+  +-----+                    */\n");
-printf("/*                   |村庄 |S08     |   王   陵    | L01 |  |     |                    */\n");
-printf("/*                   |     |        |              | 绿洲|  | S13 |                    */\n");
-printf("/*                   |     |        |              |-----+--+     |                    */\n");
-printf("/*                   +-----+--------+--+--+-----+--+        |     |                    */\n");
-printf("/*                   |村庄 |S11        |L02 绿洲|   S12     |     |                    */\n");
-printf("/*                   |C03  |           +--------+        +--+-----+                    */\n");
-printf("/*                   +-----+--+--------+--------+--------+D       |                    */\n");
-printf("/*                   | S14    | C04    | S15             | 大本营 |                    */\n");
-printf("/*                   |        |  村庄  |     +--------+  |        |                    */\n");
-printf("/*                   |        |        |     |C05村庄 |  |        |                    */\n");
-printf("/*                   +--------+--------+-----+--------+--+--------+                    */\n");
-printf("/*                                                                                     */\n");
-printf("/***************************************************************************************/\n");
+    printf("/***************************************************************************************/\n");
+    printf("/*                                                                                     */\n");
+    printf("/*--------------------------------第    三     阶    段--------------------------------*/\n");
+    printf("/*                                                                                     */\n");
+    printf("/*-----------------------------------各团队移动位置------------------------------------*/\n");
+    printf("/*                                                                                     */\n");
+    printf("/*      地图简图如下，请各领驼人选择前进方向（输入格子左上角的编号）                   */\n");
+    printf("/*                                                                                     */\n");
+    printf("/*                   +--+--+--+--+--+--+--+--+--+--+--+--+--+--+--+                    */\n");
+    printf("/*                   |M       |S01        |S02     |C01     |S03  |                    */\n");
+    printf("/*                   | 大山   |           |        | 村庄   |     |                    */\n");
+    printf("/*                   |        +--------+--+--+-----+--------+     |                    */\n");
+    printf("/*                   +-----+--+        |S06  |S07           |     |                    */\n");
+    printf("/*                   |S04  |   S05     |     |              +-----+                    */\n");
+    printf("/*                   |     |        +--+-----+-----+--------+S10  |                    */\n");
+    printf("/*                   +-----+        | W            | S09    |     |                    */\n");
+    printf("/*                   |C02  +--------+              |-----+  +-----+                    */\n");
+    printf("/*                   |村庄 |S08     |   王   陵    | L01 |  |     |                    */\n");
+    printf("/*                   |     |        |              | 绿洲|  | S13 |                    */\n");
+    printf("/*                   |     |        |              |-----+--+     |                    */\n");
+    printf("/*                   +-----+--------+--+--+-----+--+        |     |                    */\n");
+    printf("/*                   |村庄 |S11        |L02 绿洲|   S12     |     |                    */\n");
+    printf("/*                   |C03  |           +--------+        +--+-----+                    */\n");
+    printf("/*                   +-----+--+--------+--------+--------+D       |                    */\n");
+    printf("/*                   | S14    | C04    | S15             | 大本营 |                    */\n");
+    printf("/*                   |        |  村庄  |     +--------+  |        |                    */\n");
+    printf("/*                   |        |        |     |C05村庄 |  |        |                    */\n");
+    printf("/*                   +--------+--------+-----+--------+--+--------+                    */\n");
+    printf("/*                                                                                     */\n");
+    printf("/***************************************************************************************/\n");
     string action;
     cout << "您好，第" << ID + 1 << "队！您们目前在" << group[ID].locations << "，请问需要前往什么位置？" << endl;
     cout << "请输入您的目标地点的编号：";
     cin >> action;
 
+    int k = 0;
     while (1) {
+        k = 0;
         cout << "请管理员检查输入是否有误？有（1）/无（0）";
-        int k = 0;
         cin >> k;
         if (k == 1) {
             cout << "请重新输入：";
@@ -611,88 +667,19 @@ printf("/***********************************************************************
 
     group[ID].locations = action;
 
-    //system("cls");
-}
+    system("cls");
 
-// 当天天气输出
-void Weather_show(int day) {
+    if (action == "D") {
+        cout << "恭喜你的队伍回到大本营！" << endl;
+        cout << "本次行程共取得" << group[ID].gold << "块黄金！" << endl;
+        group[ID].rank = game_ranking;
+        game_ranking++;
+        group[ID].back = 1;
 
-    printf("/***************************************************************************************/\n");
-    printf("/*                                                                                     */\n");
-    printf("/*--------------------------------天    气     播    报--------------------------------*/\n");
-    printf("/*                                                                                     */\n");
-    printf("/*      第%2d天天气如下：                                                               */\n", day + 1);
-    printf("/*          |    沙漠    |    王陵    |    绿洲    |    村庄    |    大山    |         */\n");
-    printf("/*          |");
-
-    for (int i = 0; i < 5; i++) {
-        switch (weather_list[day][i]) {
-        case 0: cout << "    晴天    |"; break;
-        case 1: cout << "    高温    |"; break;
-        case 2: cout << "   沙尘暴   |"; break;
-        case 3: cout << " 高温沙尘暴 |"; break;
-        }
+        cout << "请输入1，已确认";
+        cin >> k;
     }
-    printf("         */\n/*                                                                                     */\n");
-    printf("/***************************************************************************************/\n");
-    cout << endl << endl;
-}
 
-void Weather_location_show(int day, int locations) {
-    int k = 0;
-    cout << "第" << day + 1 << "天的天气情况如下：" << endl;
-    switch (locations) {
-    case 0: cout << "沙漠：\t"; k = 0; break;
-    case 1: cout << "王陵：\t"; k = 1; break;
-    case 2: cout << "绿洲：\t"; k = 2; break;
-    case 3: cout << "村庄：\t"; k = 3; break;
-    case 4: cout << "大山：\t"; k = 4; break;
-    }
-    switch (weather_list[day][k]) {
-    case 0: cout << "晴天      \t"; break;
-    case 1: cout << "高温      \t"; break;
-    case 2: cout << "沙尘暴    \t"; break;
-    case 3: cout << "高温沙尘暴\t"; break;
-    }
-    cout << endl;
-}
-
-// 天气列表生成
-void Weather_list() {
-    for (int i = 0; i < 25; i++) {
-        for (int j = 0; j < 5; j++) {
-            weather_list[i][j] = Weather(i, j);
-        }
-    }
-}
-
-// 天气输出
-void Weather_list_show() {
-
-    printf("/***************************************************************************************/\n");
-    printf("/*                                                                                     */\n");
-    printf("/*                                天    气     列    表                                */\n");
-    printf("/*                                                                                     */\n");
-    printf("/*     |  日期  |    沙漠    |    王陵    |    绿洲    |    村庄    |    大山    |     */\n");
-    //             /*     | 第01天 |    晴天    |    高温    |   沙尘暴   | 高温沙尘暴 | 高温沙尘暴 |     */ 
-    for (int i = 0; i < 25; i++) {
-        printf("/*     | 第%2d天 |", i + 1);
-        for (int j = 0; j < 5; j++) {
-            switch (weather_list[i][j]) {
-            case 0: cout << "    晴天    |"; break;
-            case 1: cout << "    高温    |"; break;
-            case 2: cout << "   沙尘暴   |"; break;
-            case 3: cout << " 高温沙尘暴 |"; break;
-            }
-        }
-        cout <<"     */" << endl;
-    }
-    printf("/*                                                                                     */\n");
-    printf("/***************************************************************************************/\n");
-    int k;
-    cout << "请管理员截图留存！已完成请输入1，并回车！";
-    cin >> k;
-    //system("cls");
 }
 
 //大山挖黄金
@@ -711,6 +698,11 @@ void Struck_gold(int ID) {
         group[ID].gold += 1;
         group[ID].residual_load -= 50;
     }
+
+    cout << "请输入1，已确认！";
+    cin >> k;
+
+    system("cls");
 }
 
 // 王陵抽卡
@@ -723,7 +715,7 @@ void Tomb_card(int ID) {
         return;
     }
     group[ID].money -= 100;
-    a = rand() * time(NULL);
+    a = rand() * int(time(NULL));
     a = abs(a) % 10;
     switch (a)
     {
@@ -751,7 +743,7 @@ void Tomb_card(int ID) {
         cout << "恭喜你抽到了第" << a << "号卡牌，卡牌内容如下：" << endl;
         cout << "卡牌3号" << endl;
         break;
-    case 4: 
+    case 4:
         a = 4;
         group[ID].card = a;
         cout << "恭喜你抽到了第" << a << "号卡牌，卡牌内容如下：" << endl;
@@ -791,6 +783,183 @@ void Tomb_card(int ID) {
     default:
         break;
     }
+
+    cout << "请输入1，已确认！";
+    cin >> a;
+
+    system("cls");
+}
+
+// 绿洲取水
+void Oasis_water_intake(int ID) {
+    cout << "您好第" << ID + 1 << "队。欢迎您到达绿洲！" << endl;
+
+    int bang4_zhong4_sheng4 = group[ID].residual_load;
+    int shui = bang4_zhong4_sheng4 / 50;
+
+    // 判断是否有空间买水
+    if (shui < 1) {
+        cout << "您不能取水！";
+        return;
+    }
+
+    // 开始买
+    int k;
+    // 记录购买数量
+    cout << "您可以买" << shui << "罐水，请输入您需要买水的罐数：";
+    cin >> k;
+    group[ID].residual_load -= 50 * k;
+    while (group[ID].residual_load < 0) {
+        cout << "磅重超限！请重新输入！";
+        // 回退
+        group[ID].residual_load += 50 * k;
+        // 重新输入
+        cin >> k;
+        group[ID].residual_load -= 50 * k;
+    }
+    group[ID].water += k;
+
+    cout << "请输入1，已确认！";
+    cin >> k;
+
+    system("cls");
+}
+
+// 随机天气生成
+int Weather(int day, int locations) {
+    // 生成随机数
+    int a;
+    // 随机数处理——时间函数
+    a = (rand() + day) * int(time(NULL));
+    a = abs(a) % 100;
+    // 根据数字得到天气
+    // 0-晴天 1-高温 2-沙尘暴 3-高温沙尘暴
+    /*************************************/
+    /* | 地点 | 晴天 |高温|沙尘暴|高温沙尘暴|*/
+    /* | 沙漠 |  70  | 15 |  10  |    5     |*/
+    /* | 王陵 |  45  | 30 |  10  |    15    |*/
+    /* | 绿洲 |  80  | 10 |  5   |    5     |*/
+    /* | 村庄 |  85  |  5 |  5   |    5     |*/
+    /* | 大山 |  65  | 20 |  10  |    5     |*/
+    /*************************************/
+    if (locations == 0) {
+        if (a <= 70) { return 0; }
+        if (a <= 85) { return 1; }
+        if (a <= 95) { return 2; }
+        return 3;
+    }
+    else if (locations == 1) {
+        if (a <= 45) { return 0; }
+        if (a <= 75) { return 1; }
+        if (a <= 85) { return 2; }
+        return 3;
+    }
+    else if (locations == 2) {
+        if (a <= 80) { return 0; }
+        if (a <= 90) { return 1; }
+        if (a <= 95) { return 2; }
+        return 3;
+    }
+    else if (locations == 3) {
+        if (a <= 85) { return 0; }
+        if (a <= 90) { return 1; }
+        if (a <= 95) { return 2; }
+        return 3;
+    }
+    else if (locations == 4) {
+        if (a <= 65) { return 0; }
+        if (a <= 85) { return 1; }
+        if (a <= 95) { return 2; }
+        return 3;
+    }
+    return -1;
+}
+
+// 天气列表生成
+void Weather_list() {
+    for (int i = 0; i < 25; i++) {
+        for (int j = 0; j < 5; j++) {
+            weather_list[i][j] = Weather(i, j);
+        }
+    }
+}
+
+// 天气输出
+void Weather_list_show() {
+
+    printf("/***************************************************************************************/\n");
+    printf("/*                                                                                     */\n");
+    printf("/*                                天    气     列    表                                */\n");
+    printf("/*                                                                                     */\n");
+    printf("/*     |  日期  |    沙漠    |    王陵    |    绿洲    |    村庄    |    大山    |     */\n");
+    //             /*     | 第01天 |    晴天    |    高温    |   沙尘暴   | 高温沙尘暴 | 高温沙尘暴 |     */ 
+    for (int i = 0; i < 25; i++) {
+        printf("/*     | 第%2d天 |", i + 1);
+        for (int j = 0; j < 5; j++) {
+            switch (weather_list[i][j]) {
+            case 0: cout << "    晴天    |"; break;
+            case 1: cout << "    高温    |"; break;
+            case 2: cout << "   沙尘暴   |"; break;
+            case 3: cout << " 高温沙尘暴 |"; break;
+            }
+        }
+        cout << "     */" << endl;
+    }
+    printf("/*                                                                                     */\n");
+    printf("/***************************************************************************************/\n");
+    int k;
+    cout << "请管理员截图留存！已完成请输入1，并回车！";
+    cin >> k;
+    
+    system("cls");
+}
+
+// 当天天气输出
+void Weather_show(int day ) {
+
+    printf("/***************************************************************************************/\n");
+    printf("/*                                                                                     */\n");
+    printf("/*--------------------------------第    四     阶    段--------------------------------*/\n");
+    printf("/*                                                                                     */\n");
+    printf("/*---------------------------------各团队解决天气问题----------------------------------*/\n");
+    printf("/*                                                                                     */\n");
+    printf("/*--------------------------------天    气     播    报--------------------------------*/\n");
+    printf("/*                                                                                     */\n");
+    printf("/*      第%2d天天气如下：                                                               */\n", day + 1);
+    printf("/*          |    沙漠    |    王陵    |    绿洲    |    村庄    |    大山    |         */\n");
+    printf("/*          |");
+
+    for (int i = 0; i < 5; i++) {
+        switch (weather_list[day][i]) {
+        case 0: cout << "    晴天    |"; break;
+        case 1: cout << "    高温    |"; break;
+        case 2: cout << "   沙尘暴   |"; break;
+        case 3: cout << " 高温沙尘暴 |"; break;
+        }
+    }
+    printf("         */\n/*                                                                                     */\n");
+    printf("/***************************************************************************************/\n");
+    cout << endl << endl;
+}
+
+// 当天天气输出(带地点)
+void Weather_location_show(int day, int locations ) {
+    int k = 0;
+    cout << "第" << day + 1 << "天的天气情况如下：" << endl;
+    switch (locations) {
+    case 0: cout << "沙漠：\t"; k = 0; break;
+    case 1: cout << "王陵：\t"; k = 1; break;
+    case 2: cout << "绿洲：\t"; k = 2; break;
+    case 3: cout << "村庄：\t"; k = 3; break;
+    case 4: cout << "大山：\t"; k = 4; break;
+    }
+    switch (weather_list[day][k]) {
+    case 0: cout << "晴天      \t"; break;
+    case 1: cout << "高温      \t"; break;
+    case 2: cout << "沙尘暴    \t"; break;
+    case 3: cout << "高温沙尘暴\t"; break;
+    }
+    cout << endl;
 }
 
 // 村庄购物
@@ -798,7 +967,7 @@ void Village_store(int ID) {
     cout << "您好第" << ID + 1 << "队。欢迎您到达村庄！" << endl;
 
     int t;
-    cout << "您有" << group[ID].money << "元。" << group[ID].residual_load << "磅。并且身处村庄，请问是否购买物资？是（1）/否（0）" ;
+    cout << "您有" << group[ID].money << "元。" << group[ID].residual_load << "磅。并且身处村庄，请问是否购买物资？是（1）/否（0）";
     cin >> t;
     if (t == 0) {
         return;
@@ -836,6 +1005,12 @@ void Village_store(int ID) {
         group[ID].residual_load -= 10 * t;
     }
     group[ID].food += t;
+
+    Team_supplies_one(ID);
+    cout << "在村庄购物无法反悔，请输入1确认！";
+    cin >> t;
+
+    system("cls");
 }
 
 // 大本营购物
@@ -875,7 +1050,9 @@ void Base_camp_store(int num) {
     cout << "请管理员讲解完成后输入1并回车！";
     int k;
     cin >> k;
-    //system("cls");
+
+    system("cls");
+
     for (int i = 0; i < num; i++) {
         cout << "请输入第" << i + 1 << "组购买的物资！" << endl;
         group[i].ID = i;
@@ -945,16 +1122,7 @@ void Base_camp_store(int num) {
             group[i].residual_load -= 10 * group[i].compass;
         }
 
-
-        printf("/***************************************************************************************/\n");
-        printf("/*                                                                                     */\n");
-        printf("/*-----------------------------------第%2d队物资信息------------------------------------*/\n",i+1);
-        printf("/*                                                                                     */\n");
-        printf("/*          |  队名  | 水 | 食物 | 帐篷 | 指南针 | 黄金 | 零钱钱 | 剩余磅重 |          */\n");
-        printf("/*          | 第%2d队 | %2d |  %2d  |  %2d  |   %2d   ",i+1,group[i].water,group[i].food,group[i].tent,group[i].compass);
-        printf("|  %2d  |  %4d  |   %4d   |          */\n", group[i].gold, group[i].money, group[i].residual_load);
-        printf("/*                                                                                     */\n");
-        printf("/***************************************************************************************/\n");
+        Team_supplies_one(i);
 
         int k = 0;
         cout << "是否有误？有（1）/无（0）";
@@ -965,98 +1133,7 @@ void Base_camp_store(int num) {
             // 回退一队。实现重新输入
             i--;
         }
-        //system("cls");
+        system("cls");
     }
     Team_supplies();
 }
-
-// 绿洲取水
-void Oasis_water_intake(int ID) {
-    cout << "您好第" << ID + 1 << "队。欢迎您到达绿洲！" << endl;
-
-    int bang4_zhong4_sheng4 = group[ID].residual_load;
-    int shui = bang4_zhong4_sheng4 / 50;
-
-    // 判断是否有空间买水
-    if (shui < 1) {
-        cout << "您不能取水！";
-        return;
-    }
-
-    // 开始买
-    int k;
-    // 记录购买数量
-    cout << "您可以买" << shui << "罐水，请输入您需要买水的罐数：";
-    cin >> k;
-    group[ID].residual_load -= 50 * k;
-    while (group[ID].residual_load < 0) {
-        cout << "磅重超限！请重新输入！";
-        // 回退
-        group[ID].residual_load += 50 * k;
-        // 重新输入
-        cin >> k;
-        group[ID].residual_load -= 50 * k;
-    }
-    group[ID].water += k;
-}
-
-// 随机天气生成
-int Weather(int day, int locations) {
-    // 生成随机数
-    int a;
-    // 随机数处理——时间函数
-    a = (rand() + day) * time(NULL);
-    a = abs(a) % 100;
-    // 根据数字得到天气
-    // 0-晴天 1-高温 2-沙尘暴 3-高温沙尘暴
-    /*************************************/
-    /* | 地点 | 晴天 |高温|沙尘暴|高温沙尘暴|*/
-    /* | 沙漠 |  70  | 15 |  10  |    5     |*/
-    /* | 王陵 |  45  | 30 |  10  |    15    |*/
-    /* | 绿洲 |  80  | 10 |  5   |    5     |*/
-    /* | 村庄 |  85  |  5 |  5   |    5     |*/
-    /* | 大山 |  65  | 20 |  10  |    5     |*/
-    /*************************************/
-    if (locations == 0) {
-        if (a <= 70) { return 0; }
-        if (a <= 85) { return 1; }
-        if (a <= 95) { return 2; }
-        return 3;
-    }
-    else if (locations == 1) {
-        if (a <= 45) { return 0; }
-        if (a <= 75) { return 1; }
-        if (a <= 85) { return 2; }
-        return 3;
-    }
-    else if (locations == 2) {
-        if (a <= 80) { return 0; }
-        if (a <= 90) { return 1; }
-        if (a <= 95) { return 2; }
-        return 3;
-    }
-    else if (locations == 3) {
-        if (a <= 85) { return 0; }
-        if (a <= 90) { return 1; }
-        if (a <= 95) { return 2; }
-        return 3;
-    }
-    else if (locations == 4) {
-        if (a <= 65) { return 0; }
-        if (a <= 85) { return 1; }
-        if (a <= 95) { return 2; }
-        return 3;
-    }
-    return -1;
-}
-
-void modeset(int w,int h) {
-	HANDLE hOut = GetStdHandle(STD_OUTPUT_HANDLE);
-	COORD size = {w, h};
-	SetConsoleScreenBufferSize(hOut,size);
-	SMALL_RECT rc = {1,1, w, h};
-	SetConsoleWindowInfo(hOut ,true ,&rc);
-	//system("cls");
-	return;
-}
-
