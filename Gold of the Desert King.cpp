@@ -54,6 +54,7 @@
 /************************************************************************************/
 
 #include <time.h>
+#include<conio.h>
 #include <iostream>
 using namespace std;
 
@@ -65,8 +66,8 @@ struct GROUP {
     int rank = -1;             // 排名
     int integral = 1000;       // 积分
     int alive_day = 0;         // 存活天数
-    int money = 10000;          // 剩余的金钱
-    int residual_load = 10000;  // 剩余的磅重
+    int money = 1000;          // 剩余的金钱
+    int residual_load = 1000;  // 剩余的磅重
     int water = 1000;             // 水
     int food = 1000;              // 食物
     int tent = 1000;              // 帐篷
@@ -79,10 +80,12 @@ struct GROUP {
 
 GROUP group[100];            // 预设100个队伍
 
-
+char confirm;
 int group_num = 0;       // 队伍数量
 int group_back[100];
-int game_ranking = 0;
+int game_day = 0;        // 游戏日期
+int game_ranking = 0;    // 排名
+int back_day = 0;        // 上一队到达日期
 int weather_list[25][5] = {  // 第一维度为天数，第二维度为各地点的天气
     { 0 , 1 , 2 , 3 , 0 } ,
     { 0 , 1 , 2 , 3 , 0 } ,
@@ -132,12 +135,16 @@ void Game_start();                // 游戏开始
 void Game_going(int day);         // 游戏进行
 int  Game_end();                  // 游戏结束
 // 系统设置
-void Welcome_interface();         // 欢迎界面
 void Player_init();               // 游戏人数录入
 void Team_supplies();             // 各队物资输出
 void Team_supplies_one(int ID);   // 当前队伍数据输出
 void Team_information();          // 各队信息
 void Team_Integral();             // 计算各队积分
+// UI
+void Welcome_interface();         // 欢迎界面
+void Developer_introduction();    // 开发人员介绍
+void Development_history();       // 开发历程
+void Introduction_rules();        // 规则介绍
 
 int main() {
     // 欢迎界面
@@ -200,9 +207,8 @@ void Team_supplies(){
     }
     printf("/*                                                                                     */\n");
     printf("/***************************************************************************************/\n");
-    cout << "请管理员确认后按1，并回车。";
-    int k;
-    cin >> k;
+    cout << "请管理员按任意键确认。";
+    confirm = _getch();
     system("cls");
 }
 
@@ -239,9 +245,9 @@ void Team_information(){
     printf("/*                                                                                     */\n");
     printf("/***************************************************************************************/\n");
 
-    int k;
-    cout << "请输入1，已确认";
-    cin >> k;
+
+    cout << "请管理员按任意键确认。";
+    confirm = _getch();
 }
 
 // 计算各队积分
@@ -268,10 +274,122 @@ void Team_Integral(){
     printf("/*                                                                                     */\n");
     printf("/***************************************************************************************/\n");
 
-    cout << "请管理员输入1，已确认";
-    int k;
-    cin >> k;
+    cout << "请管理员按任意键确认。";
+    confirm = _getch();
+}
 
+// 开发人员介绍
+void Developer_introduction(){
+    printf("/***************************************************************************************/\n");
+    printf("/*                                                                                     */\n");
+    printf("/*--------------------------------开    发     人    员--------------------------------*/\n");
+    printf("/*                                                                                     */\n");
+    printf("/*    姓    名：宋韩尧                                                                 */\n");
+    printf("/*    学    院：信息工程学院、人工智能学院                                             */\n");
+    printf("/*    专    业：计算机科学与技术（师范）                                               */\n");
+    printf("/*    个人简介：                                                                       */\n");
+    printf("/*                                                                                     */\n");
+    printf("/*                                                                                     */\n");
+    printf("/*                                                                                     */\n");
+    printf("/*                                                                                     */\n");
+    printf("/*                                                                                     */\n");
+    printf("/*                                                                                     */\n");
+    printf("/*                                                                                     */\n");
+    printf("/*                                                                                     */\n");
+    printf("/*                                                                                     */\n");
+    printf("/*      姓    名：张  祥                                                               */\n");
+    printf("/*      学    院：信息工程学院、人工智能学院                                           */\n");
+    printf("/*      专    业：计算机科学与技术（师范）                                             */\n");
+    printf("/*      个人简介：                                                                     */\n");
+    printf("/*                                                                                     */\n");
+    printf("/*                                                                                     */\n");
+    printf("/*                                                                                     */\n");
+    printf("/*                                                                                     */\n");
+    printf("/*                                                                                     */\n");
+    printf("/*                                                                                     */\n");
+    printf("/*                                                                                     */\n");
+    printf("/*                                                                                     */\n");
+    printf("/*                                                                                     */\n");
+    printf("/*                                                                                     */\n");
+    printf("/***************************************************************************************/\n");
+    cout << "请按任意键继续！";
+    confirm = _getch();
+}
+
+// 开发历程
+void Development_history(){
+    printf("/***************************************************************************************/\n");
+    printf("/*                                                                                     */\n");
+    printf("/*--------------------------------开    发     历    程--------------------------------*/\n");
+    printf("/*                                                                                     */\n");
+    printf("/*    2023-7-10 项目启动                                                               */\n");
+    printf("/*                                                                                     */\n");
+    printf("/*    2023-7-18 完成基本游戏逻辑                                                       */\n");
+    printf("/*                                                                                     */\n");
+    printf("/*    2023-7-21 游戏已完成                                                             */\n");
+    printf("/*                                                                                     */\n");
+    printf("/*    2023-7-22 填补游戏功能                                                           */\n");
+    printf("/*                                                                                     */\n");
+    printf("/*                                                                                     */\n");
+    printf("/*                                                                                     */\n");
+    printf("/*                                                                                     */\n");
+    printf("/*                                                                                     */\n");
+    printf("/*                                                                                     */\n");
+    printf("/*                                                                                     */\n");
+    printf("/*                                                                                     */\n");
+    printf("/*                                                                                     */\n");
+    printf("/*                                                                                     */\n");
+    printf("/*                                                                                     */\n");
+    printf("/*                                                                                     */\n");
+    printf("/*                                                                                     */\n");
+    printf("/*                                                                                     */\n");
+    printf("/*                                                                                     */\n");
+    printf("/*                                                                                     */\n");
+    printf("/*                                                                                     */\n");
+    printf("/*                                                                                     */\n");
+    printf("/*                                                                                     */\n");
+    printf("/*                                                                                     */\n");
+    printf("/***************************************************************************************/\n");
+    cout << "请按任意键继续！";
+    confirm = _getch();
+}
+
+// 规则介绍
+void Introduction_rules(){
+    printf("/***************************************************************************************/\n");
+    printf("/*                                                                                     */\n");
+    printf("/*                                                                                     */\n");
+    printf("/*--------------------------------规    则     介    绍--------------------------------*/\n");
+    printf("/*                                                                                     */\n");
+    printf("/*                                                                                     */\n");
+    printf("/*                                                                                     */\n");
+    printf("/*        很多年前，有探险者在人迹罕至的地方意外地发现了一座矿藏丰富的金矿，并把这     */\n");
+    printf("/*    个地方取名为大山。消息传出后，不少人趋之若鹜。                                   */\n");
+    printf("/*                                                                                     */\n");
+    printf("/*                                                                                     */\n");
+    printf("/*        现在，这些宝藏等待你来发掘……                                                 */\n");
+    printf("/*                                                                                     */\n");
+    printf("/*                                                                                     */\n");
+    printf("/*                                                                                     */\n");
+    printf("/*        掘金队伍构成如下：                                                           */\n");
+    printf("/*                                                                                     */\n");
+    printf("/*        队长：掘金过程的统筹、管理与最后决策，对团队成员负责                         */\n");
+    printf("/*        财务官：掌管全队的财产和物资，计算每天的消耗，填写决策表                     */\n");
+    printf("/*        观察员：不参与掘金过程决策，观察每位队员的过程表现，并给予反馈               */\n");
+    printf("/*        采购员：从交易中心采购/交纳所需物质                                          */\n");
+    printf("/*        领驼人：管理本驼队行进路线，监督其他驼队行进路线，领取所挖黄金               */\n");
+    printf("/*        信息员：收集有利于本驼队目标实现的各种情报                                   */\n");
+    printf("/*                                                                                     */\n");
+    printf("/*                                                                                     */\n");
+    printf("/*                                                                                     */\n");
+    printf("/*        从大本营出发，每天只能行进至相邻的一格；                                     */\n");
+    printf("/*        25天内必须回到大本营，否则就是“葬身沙海”；                                   */\n");
+    printf("/*        探险途中，任何一天如果发生断粮或断水，都属“葬身沙海”，该队即自动退出。       */\n");
+    printf("/*                                                                                     */\n");
+    printf("/*                                                                                     */\n");
+    printf("/***************************************************************************************/\n");
+    cout << "请按任意键继续！";
+    confirm = _getch();
 }
 
 // 欢迎界面        // 选择游戏模式
@@ -294,10 +412,10 @@ void Welcome_interface(){
     printf("/*                              3.开发人员介绍                                         */\n");
     printf("/*                                                                                     */\n");
     printf("/*                                                                                     */\n");
-    printf("/*                              4.项目介绍                                             */\n");
+    printf("/*                              4.项目历程                                             */\n");
     printf("/*                                                                                     */\n");
     printf("/*                                                                                     */\n");
-    printf("/*                                                                                     */\n");
+    printf("/*                              5.退出                                                 */\n");
     printf("/*                                                                                     */\n");
     printf("/*                                                                                     */\n");
     printf("/*                                                                                     */\n");
@@ -309,23 +427,38 @@ void Welcome_interface(){
     printf("/*                                                                                     */\n");
     printf("/***************************************************************************************/\n");
     cout << "请输入您的选择：";
-    int k;
-    cin >> k;
+    char k;
+    k = _getch();
     system("cls");
     switch (k) {
-    case 1:
+    case '1':
+        Introduction_rules();
+        system("cls");
+        Welcome_interface();
         break;
-    case 2:  // 游戏开始
+    case '2':  // 游戏开始
         Game_start();
+        system("cls");
+        Welcome_interface();
         break;
-    case 3:
+    case '3':
+        Developer_introduction();
+        system("cls");
+        Welcome_interface();
         break;
-    case 4:
+    case '4':
+        Development_history();
+        system("cls");
+        Welcome_interface();
+        break;
+    case '5':
+        return;
         break;
     default:
         break;
     }
     system("cls");
+    return;
 }
 
 // 游戏开始
@@ -343,12 +476,12 @@ void Game_start() {
     Base_camp_store(group_num);
 
     // 游戏进行  25天
-    for (int i = 0; i < 25; i++) {
+    for (game_day = 0; game_day < 25; game_day++) {
         if (Game_end() == 1) {
             break;
         }
 
-        Game_going(i);
+        Game_going(game_day);
 
     }
 
@@ -432,6 +565,29 @@ void Game_going(int day) {
         }
         Tomb_card(i);
     }
+
+    // 判断是否存在黑市交易
+    cout << "请问是否存在黑市交易？是（1）/否（0）";
+    int k;
+    cin >> k;
+    while (k == 1) {
+        int Team1, Team2;
+        cout << "请输入两队的编号！中间用空格分割。";
+        cin >> Team1 >> Team2;
+        Team1--, Team2--;
+        if (group[Team1].locations != group[Team2].locations) {
+            cout << "对不起，这两队不在同一格，无法交易！" << endl; 
+        }
+        int T1W, T1F, T1T, T1C, T1G, T1M, T2W, T2F, T2T, T2C, T2G, T2M;
+        cout << "请两队分别按如下顺序输入交易的物资，不交易请填入0，中间用空格分割！" << endl;
+        cout << "\t| 水 | 食物 | 帐篷 | 指南针 | 黄金 |  零钱  |\n\t";
+        cin >> T1W >> T1F >> T1T >> T1C >> T1G >> T1M;
+        cin >> T2W >> T2F >> T2T >> T2C >> T2G >> T2M;
+        
+        
+    }
+
+    system("cls");
 
     Team_supplies();
 }
@@ -608,8 +764,9 @@ void Weather_action(int ID, int day) {
     cout << " | 选项   \t| 水     \t| 食物   \t| 指南针 \t| 帐篷   \t| " << endl;
     cout << " |        \t| " << group[ID].water << "     \t|  " << group[ID].food << "     \t|   ";
     cout << group[ID].compass << "     \t|  " << group[ID].tent << "     \t| " << endl;
-    cout << "请输入1，已确认";
-    cin >> k;
+
+    cout << "请按任意键确认。";
+    confirm = _getch();
 
     system("cls");
 }
@@ -650,6 +807,11 @@ void Move_Action(int ID) {
     cout << "您好，第" << ID + 1 << "队！您们目前在" << group[ID].locations << "，请问需要前往什么位置？" << endl;
     cout << "请输入您的目标地点的编号：";
     cin >> action;
+    while (action[0] != 'D' || action[0] != 'S' || action[0] != 'W' || action[0] != 'C' || action[0] != 'L' || action[0] != 'M') {
+        cout << "输入地点不合法，请注意大小写！" << endl;
+        cout << "请输入您的目标地点的编号：";
+        cin >> action;
+    }
 
     int k = 0;
     while (1) {
@@ -669,15 +831,22 @@ void Move_Action(int ID) {
 
     system("cls");
 
-    if (action == "D") {
-        cout << "恭喜你的队伍回到大本营！" << endl;
+    if (action[0] == 'D') {
+        cout << "您好第" << ID + 1 << "队，恭喜你的队伍回到大本营！" << endl;
         cout << "本次行程共取得" << group[ID].gold << "块黄金！" << endl;
         group[ID].rank = game_ranking;
-        game_ranking++;
+        if (back_day == 0) {
+            back_day = game_day;
+        }
+        if (back_day != game_day) {
+            game_ranking++;
+        }
+        back_day = game_day;
         group[ID].back = 1;
 
-        cout << "请输入1，已确认";
-        cin >> k;
+
+        cout << "请按任意键确认。";
+        confirm = _getch();
     }
 
 }
@@ -699,8 +868,8 @@ void Struck_gold(int ID) {
         group[ID].residual_load -= 50;
     }
 
-    cout << "请输入1，已确认！";
-    cin >> k;
+    cout << "请按任意键确认。";
+    confirm = _getch();
 
     system("cls");
 }
@@ -712,6 +881,7 @@ void Tomb_card(int ID) {
     cout << "您目前在王陵可以和神秘老人获得一条预言，但是需要花费100元，请问是否获得？是（1）/否（0）";
     cin >> a;
     if (a == 0) {
+        system("cls");
         return;
     }
     group[ID].money -= 100;
@@ -784,8 +954,8 @@ void Tomb_card(int ID) {
         break;
     }
 
-    cout << "请输入1，已确认！";
-    cin >> a;
+    cout << "请按任意键确认。";
+    confirm = _getch();
 
     system("cls");
 }
@@ -819,8 +989,8 @@ void Oasis_water_intake(int ID) {
     }
     group[ID].water += k;
 
-    cout << "请输入1，已确认！";
-    cin >> k;
+    cout << "请按任意键确认。";
+    confirm = _getch();
 
     system("cls");
 }
@@ -908,8 +1078,8 @@ void Weather_list_show() {
     printf("/*                                                                                     */\n");
     printf("/***************************************************************************************/\n");
     int k;
-    cout << "请管理员截图留存！已完成请输入1，并回车！";
-    cin >> k;
+    cout << "请管理员截图留存！并按任意键确认。";
+    confirm = _getch();
     
     system("cls");
 }
@@ -970,6 +1140,7 @@ void Village_store(int ID) {
     cout << "您有" << group[ID].money << "元。" << group[ID].residual_load << "磅。并且身处村庄，请问是否购买物资？是（1）/否（0）";
     cin >> t;
     if (t == 0) {
+        system("cls");
         return;
     }
     cout << "您有" << group[ID].money << "元。" << group[ID].residual_load << "磅。请输入在村庄购买的水的数量（50元/罐、50磅/罐）：";
@@ -1007,8 +1178,8 @@ void Village_store(int ID) {
     group[ID].food += t;
 
     Team_supplies_one(ID);
-    cout << "在村庄购物无法反悔，请输入1确认！";
-    cin >> t;
+    cout << "在村庄购物无法反悔，请按任意键确认。";
+    confirm = _getch();
 
     system("cls");
 }
@@ -1047,9 +1218,8 @@ void Base_camp_store(int num) {
     printf("/*                                                                                     */\n");
     printf("/*                                                                                     */\n");
     printf("/***************************************************************************************/\n");
-    cout << "请管理员讲解完成后输入1并回车！";
-    int k;
-    cin >> k;
+    cout << "请管理员讲解完成后请按任意键确认。";
+    confirm = _getch();
 
     system("cls");
 
