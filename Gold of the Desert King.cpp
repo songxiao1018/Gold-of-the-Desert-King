@@ -56,6 +56,7 @@
 #include <time.h>
 #include<conio.h>
 #include <iostream>
+#include <string>
 using namespace std;
 
 struct GROUP {
@@ -124,9 +125,10 @@ void Weather_list_show();                           // 天气列表输出
 void Weather_show(int day);                          // 当天天气输出(当天全部地点)
 void Weather_location_show(int day, int locations ); // 当天天气输出(带地点)
 // 游戏事件
-void Oasis_water_intake(int ID);  // 绿洲取水
-void Tomb_card(int ID);           // 王陵抽卡
-void Struck_gold(int ID);         //大山挖黄金
+void Oasis_water_intake(int ID);         // 绿洲取水
+void Tomb_card(int ID);                  // 王陵抽卡
+void Struck_gold(int ID);                //大山挖黄金
+void Black_market(int Team1, int Team2); // 黑市交易
 // 行动系统
 void Move_Action(int ID);                // 行动
 void Weather_action(int ID, int day);    // 天气行动
@@ -330,7 +332,7 @@ void Development_history(){
     printf("/*                                                                                     */\n");
     printf("/*    2023-7-22 填补游戏功能                                                           */\n");
     printf("/*                                                                                     */\n");
-    printf("/*                                                                                     */\n");
+    printf("/*    2023-7-23 项目完成                                                               */\n");
     printf("/*                                                                                     */\n");
     printf("/*                                                                                     */\n");
     printf("/*                                                                                     */\n");
@@ -572,24 +574,105 @@ void Game_going(int day) {
     cin >> k;
     while (k == 1) {
         int Team1, Team2;
-        cout << "请输入两队的编号！中间用空格分割。";
+        cout << "请输入两队的编号！中间用空格分割。" << endl;
         cin >> Team1 >> Team2;
         Team1--, Team2--;
-        if (group[Team1].locations != group[Team2].locations) {
-            cout << "对不起，这两队不在同一格，无法交易！" << endl; 
-        }
-        int T1W, T1F, T1T, T1C, T1G, T1M, T2W, T2F, T2T, T2C, T2G, T2M;
-        cout << "请两队分别按如下顺序输入交易的物资，不交易请填入0，中间用空格分割！" << endl;
-        cout << "\t| 水 | 食物 | 帐篷 | 指南针 | 黄金 |  零钱  |\n\t";
-        cin >> T1W >> T1F >> T1T >> T1C >> T1G >> T1M;
-        cin >> T2W >> T2F >> T2T >> T2C >> T2G >> T2M;
-        
-        
+        Black_market(Team1,Team2);
+
+        cout << "请问是否存在黑市交易？是（1）/否（0）";
+        cin >> k;
     }
+    
 
     system("cls");
 
     Team_supplies();
+}
+
+// 黑市交易
+void Black_market(int Team1, int Team2) {
+    system("cls");
+    if (group[Team1].alive == 0 || group[Team2].alive == 0) {
+        cout << "对不起，包含已死亡队伍，无法交易！" << endl;
+        cout << "请按任意键确认。";
+        confirm = _getch();
+        system("cls");
+        return;
+    }
+    if (group[Team1].locations != group[Team2].locations) {
+        cout << "对不起，这两队不在同一格，无法交易！" << endl;
+        cout << "请按任意键确认。";
+        confirm = _getch();
+        system("cls");
+        return;
+    }
+    cout << "如下为两队物资清单" << endl;
+    Team_supplies_one(Team1);
+    Team_supplies_one(Team2);
+
+    int T1W, T1F, T1T, T1C, T1G, T1M, T2W, T2F, T2T, T2C, T2G, T2M;
+    cout << "请两队分别按如下顺序输入交易的物资，不交易请填入0，中间用空格分割！" << endl;
+    cout << "\t| 水 | 食物 | 帐篷 | 指南针 | 黄金 |  零钱  |\n";
+    cout << "第" << Team1 + 1 << "队\t";
+    cin >> T1W >> T1F >> T1T >> T1C >> T1G >> T1M;
+    cout << "第" << Team2 + 1 << "队\t";
+    cin >> T2W >> T2F >> T2T >> T2C >> T2G >> T2M;
+
+    
+
+    if (group[Team1].water - T1W < 0 || group[Team1].food - T1F < 0 || group[Team1].tent - T1T < 0 || group[Team1].compass - T1C < 0 || group[Team1].gold - T1G < 0 || group[Team1].money - T1M < 0) {
+        cout << "对不起第" << Team1 + 1 << "队，您没有足够的物资交换！" << endl;
+        cout << "请按任意键确认。";
+        confirm = _getch();
+        return;
+    }
+    if (group[Team2].water - T2W < 0 || group[Team2].food - T2F < 0 || group[Team2].tent - T2T < 0 || group[Team2].compass - T2C < 0 || group[Team2].gold - T2G < 0 || group[Team2].money - T2M < 0) {
+        cout << "对不起第" << Team2 + 1 << "队，您没有足够的物资交换！" << endl;
+        cout << "请按任意键确认。";
+        confirm = _getch();
+        return;
+    }
+
+    // 处理数据 判断超磅
+    group[Team1].residual_load = group[Team1].residual_load - T1W * 50 - T1F * 10 - T1T * 20 - T1C * 10 - T1G * 50;
+    group[Team1].residual_load = group[Team1].residual_load + T2W * 50 + T2F * 10 + T2T * 20 + T2C * 10 + T2G * 50;
+
+    group[Team2].residual_load = group[Team2].residual_load - T2W * 50 - T2F * 10 - T2T * 20 - T2C * 10 - T2G * 50;
+    group[Team2].residual_load = group[Team2].residual_load + T1W * 50 + T1F * 10 + T1T * 20 + T1C * 10 + T1G * 50;
+
+    if (group[Team1].residual_load < 0 || group[Team2].residual_load < 0 || group[Team1].residual_load > 1000 || group[Team2].residual_load > 1000) {
+        cout << "磅重超限！无法完成交易！" << endl;
+        // 回退
+        group[Team1].residual_load = group[Team1].residual_load + T1W * 50 + T1F * 10 + T1T * 20 + T1C * 10 + T1G * 50;
+        group[Team1].residual_load = group[Team1].residual_load - T2W * 50 - T2F * 10 - T2T * 20 - T2C * 10 - T2G * 50;
+
+        group[Team2].residual_load = group[Team2].residual_load + T2W * 50 + T2F * 10 + T2T * 20 + T2C * 10 + T2G * 50;
+        group[Team2].residual_load = group[Team2].residual_load - T1W * 50 - T1F * 10 - T1T * 20 - T1C * 10 - T1G * 50;
+        
+        Team_supplies_one(Team1);
+        Team_supplies_one(Team2);
+        cout << "请按任意键确认。";
+        confirm = _getch();
+        system("cls");
+        return;
+    }
+
+    group[Team1].water = group[Team1].water + T2W - T1W;
+    group[Team1].food = group[Team1].food + T2F - T1F;
+    group[Team1].tent = group[Team1].tent + T2T - T1T;
+    group[Team1].compass = group[Team1].compass + T2C - T1C;
+    group[Team1].gold = group[Team1].gold + T2G - T1G;
+    group[Team1].money = group[Team1].money + T2M - T1M;
+
+    cout << "恭喜成功交易！如下为两队物资清单" << endl;
+    Team_supplies_one(Team1);
+    Team_supplies_one(Team2);
+    cout << "请按任意键确认。";
+    confirm = _getch();
+
+    system("cls");
+
+
 }
 
 // 游戏结束
@@ -781,7 +864,7 @@ void Move_Action(int ID) {
     printf("/*                                                                                     */\n");
     printf("/*      地图简图如下，请各领驼人选择前进方向（输入格子左上角的编号）                   */\n");
     printf("/*                                                                                     */\n");
-    printf("/*                   +--+--+--+--+--+--+--+--+--+--+--+--+--+--+--+                    */\n");
+    printf("/*                   +--------+-----------+--------+--------+-----+                    */\n");
     printf("/*                   |M       |S01        |S02     |C01     |S03  |                    */\n");
     printf("/*                   | 大山   |           |        | 村庄   |     |                    */\n");
     printf("/*                   |        +--------+--+--+-----+--------+     |                    */\n");
@@ -807,7 +890,7 @@ void Move_Action(int ID) {
     cout << "您好，第" << ID + 1 << "队！您们目前在" << group[ID].locations << "，请问需要前往什么位置？" << endl;
     cout << "请输入您的目标地点的编号：";
     cin >> action;
-    while (action[0] != 'D' || action[0] != 'S' || action[0] != 'W' || action[0] != 'C' || action[0] != 'L' || action[0] != 'M') {
+    while (action[0] != 'D' && action[0] != 'S' && action[0] != 'W' && action[0] != 'C' && action[0] != 'L' && action[0] != 'M') {
         cout << "输入地点不合法，请注意大小写！" << endl;
         cout << "请输入您的目标地点的编号：";
         cin >> action;
