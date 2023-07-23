@@ -1,5 +1,5 @@
 ﻿  Gold of the Desert King.cpp
-F:\code manger\Gold of the Desert King\Gold of the Desert King.cpp(1163,9): warning C4101: “k”: 未引用的局部变量
+F:\code manger\Gold of the Desert King\Gold of the Desert King.cpp(1170,9): warning C4101: “k”: 未引用的局部变量
   正在生成代码
   Previous IPDB not found, fall back to full compilation.
   All 161 functions were compiled because no usable IPDB/IOBJ from previous compilation was found.
