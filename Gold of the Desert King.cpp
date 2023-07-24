@@ -19,7 +19,7 @@
 /*                                                                                  */
 /*                         项目名称：沙漠黄金                                       */
 /*                         文件名称：沙漠黄金.cpp                                   */
-/*                         项目作者：宋韩尧、张  祥                                 */
+/*                         创作团队：晓之梦团队                                 */
 /*                         学    校：南京晓庄学院                                   */
 /*                         院    系：信息工程学院、人工智能学院                     */
 /*                                                                                  */
@@ -30,8 +30,6 @@
 /************************************************************************************/
 /*                                                                                  */
 /*                                   MIT License                                    */
-/*                                                                                  */
-/*  Copyright (c) 2022 xiaomeng                                                     */
 /*                                                                                  */
 /*  Permission is hereby granted, free of charge, to any person obtaining a copy    */
 /*  of this software and associated documentation files (the "Software"), to deal   */
@@ -69,59 +67,74 @@ struct GROUP {
     int alive_day = 0;         // 存活天数
     int money = 1000;          // 剩余的金钱
     int residual_load = 1000;  // 剩余的磅重
-    int water = 1000;             // 水
-    int food = 1000;              // 食物
-    int tent = 1000;              // 帐篷
-    int compass = 1000;           // 指南针
+    int water = 1000;          // 水
+    int food = 1000;           // 食物
+    int tent = 1000;           // 帐篷
+    int compass = 1000;        // 指南针
     string locations = "D";    // 位置
     int gold = 0;              // 黄金
-    int card = -1;              // 王陵抽取卡牌编号
+    int card = -1;             // 王陵抽取卡牌编号
     string Bei_zhu = " ";      // 备注
 };
 
 GROUP group[100];            // 预设100个队伍
-
-char confirm;
+int ALL_DAY = 15;         // 游戏天数
+char confirm;           // 接受确认回参
 int group_num = 0;       // 队伍数量
-int group_back[100];
 int game_day = 0;        // 游戏日期
 int game_ranking = 0;    // 排名
 int back_day = 0;        // 上一队到达日期
-int weather_list[25][5] = {  // 第一维度为天数，第二维度为各地点的天气
-    { 0 , 1 , 2 , 3 , 0 } ,
-    { 0 , 1 , 2 , 3 , 0 } ,
-    { 0 , 1 , 2 , 3 , 0 } ,
-    { 0 , 1 , 2 , 3 , 0 } ,
-    { 0 , 1 , 2 , 3 , 0 } ,
-    { 0 , 1 , 2 , 3 , 0 } ,
-    { 0 , 1 , 2 , 3 , 0 } ,
-    { 0 , 1 , 2 , 3 , 0 } ,
-    { 0 , 1 , 2 , 3 , 0 } ,
-    { 0 , 1 , 2 , 3 , 0 } ,
-    { 0 , 1 , 2 , 3 , 0 } ,
-    { 0 , 1 , 2 , 3 , 0 } ,
-    { 0 , 1 , 2 , 3 , 0 } ,
-    { 0 , 1 , 2 , 3 , 0 } ,
-    { 0 , 1 , 2 , 3 , 0 } ,
-    { 0 , 1 , 2 , 3 , 0 } ,
-    { 0 , 1 , 2 , 3 , 0 } ,
-    { 0 , 1 , 2 , 3 , 0 } ,
-    { 0 , 1 , 2 , 3 , 0 } ,
-    { 0 , 1 , 2 , 3 , 0 } ,
-    { 0 , 1 , 2 , 3 , 0 } ,
-    { 0 , 1 , 2 , 3 , 0 } ,
-    { 0 , 1 , 2 , 3 , 0 } ,
-    { 0 , 1 , 2 , 3 , 0 } ,
-    { 0 , 1 , 2 , 3 , 0 } ,
+int weather_list[30][5] = {  // 第一维度为天数，第二维度为各地点的天气
+    { 0 , 1 , 2 , 3 , 0 } ,{ 0 , 1 , 2 , 3 , 0 } ,{ 0 , 1 , 2 , 3 , 0 } ,{ 0 , 1 , 2 , 3 , 0 } ,{ 0 , 1 , 2 , 3 , 0 } ,
+    { 0 , 1 , 2 , 3 , 0 } ,{ 0 , 1 , 2 , 3 , 0 } ,{ 0 , 1 , 2 , 3 , 0 } ,{ 0 , 1 , 2 , 3 , 0 } ,{ 0 , 1 , 2 , 3 , 0 } ,
+    { 0 , 1 , 2 , 3 , 0 } ,{ 0 , 1 , 2 , 3 , 0 } ,{ 0 , 1 , 2 , 3 , 0 } ,{ 0 , 1 , 2 , 3 , 0 } ,{ 0 , 1 , 2 , 3 , 0 } ,
+    { 0 , 1 , 2 , 3 , 0 } ,{ 0 , 1 , 2 , 3 , 0 } ,{ 0 , 1 , 2 , 3 , 0 } ,{ 0 , 1 , 2 , 3 , 0 } ,{ 0 , 1 , 2 , 3 , 0 } ,
+    { 0 , 1 , 2 , 3 , 0 } ,{ 0 , 1 , 2 , 3 , 0 } ,{ 0 , 1 , 2 , 3 , 0 } ,{ 0 , 1 , 2 , 3 , 0 } ,{ 0 , 1 , 2 , 3 , 0 } ,
+    { 0 , 1 , 2 , 3 , 0 } ,{ 0 , 1 , 2 , 3 , 0 } ,{ 0 , 1 , 2 , 3 , 0 } ,{ 0 , 1 , 2 , 3 , 0 } ,{ 0 , 1 , 2 , 3 , 0 } 
+};
+string MAP[25][10] = {
+    {"W"  ,"S05","S06","S07","S09","L01","S12","L02","S11","S08"},
+    {"M"  ,"S01","S04","S05"},
+    {"D"  ,"S15","S12","S13"},
+
+    {"S01","M"  ,"S05","S06","S02"},
+    {"S02","S01","S06","S07","C01"},
+    {"S03","C01","S07","S10"},
+    {"S04","M"  ,"S05","C02"},
+    {"S05","M"  ,"S01","S06","W"  ,"S08","C02","S04"},
+    {"S06","S01","S02","S07","W"  ,"S05"},
+    {"S07","S02","C01","S03","S10","S09","W"  ,"S06"},
+    {"S08","C02","S05","W"  ,"S11"},
+    {"S09","W"  ,"S07","S10","L01","S12","S13"},
+    {"S10","S07","S03","S13","S09"},
+    {"S11","S08","C03","S14","C04","S15","S12","L02","W"},
+    {"S12","W"  ,"L01","S09","S13","D"  ,"S15","S11","L02"},
+    {"S13","S09","S10","D"  ,"S12"},
+    {"S14","C03","S11","C04"},
+    {"S15","C04","C05","S11","D"  ,"S12"},
+
+    {"C01","S02","S07","S03"},
+    {"C02","S04","S05","S08","C03"},
+    {"C03","C02","S11","S14"},
+    {"C04","S14","S11","S15"},
+    {"C05","S15"},
+
+    {"L01","W"  ,"S09","S12"},
+    {"L02","S11","W"  ,"S12"},
 };
 
+// UI
+void Welcome_interface();         // 欢迎界面
+void Developer_introduction();    // 开发人员介绍
+void Development_history();       // 开发历程
+void Introduction_rules();        // 规则介绍
 // 商店系统
 void Base_camp_store(int num);    // 大本营购物
 void Village_store(int ID);       // 村庄购物
 // 天气部分
-int   Weather(int day, int locations);                // 天气生成
+int  Weather(int day, int locations);                // 天气生成
 void Weather_list();                                 // 天气列表生成
-void Weather_list_show();                           // 天气列表输出
+void Weather_list_show();                             // 天气列表输出
 void Weather_show(int day);                          // 当天天气输出(当天全部地点)
 void Weather_location_show(int day, int locations ); // 当天天气输出(带地点)
 // 游戏事件
@@ -131,6 +144,7 @@ void Struck_gold(int ID);                //大山挖黄金
 void Black_market(int Team1, int Team2); // 黑市交易
 // 行动系统
 void Move_Action(int ID);                // 行动
+int  Move_map(int ID, string action);    // 地图判断
 void Weather_action(int ID, int day);    // 天气行动
 // 游戏系统
 void Game_start();                // 游戏开始
@@ -142,11 +156,6 @@ void Team_supplies();             // 各队物资输出
 void Team_supplies_one(int ID);   // 当前队伍数据输出
 void Team_information();          // 各队信息
 void Team_Integral();             // 计算各队积分
-// UI
-void Welcome_interface();         // 欢迎界面
-void Developer_introduction();    // 开发人员介绍
-void Development_history();       // 开发历程
-void Introduction_rules();        // 规则介绍
 
 int main() {
     // 欢迎界面
@@ -247,7 +256,6 @@ void Team_information(){
     printf("/*                                                                                     */\n");
     printf("/***************************************************************************************/\n");
 
-
     cout << "请管理员按任意键确认。";
     confirm = _getch();
 }
@@ -260,7 +268,7 @@ void Team_Integral(){
         if (group[i].rank == -1) {
             group[i].integral = 0;
         }
-        group[i].integral += group[i].gold * 1000 * group[i].rank;
+        group[i].integral += group[i].gold * 50 * 10 * (11 - group[i].rank);
     }
 
     system("cls");
@@ -429,11 +437,10 @@ void Welcome_interface(){
     printf("/*                                                                                     */\n");
     printf("/***************************************************************************************/\n");
     cout << "请输入您的选择：";
-    char k;
-    k = _getch();
+    confirm = _getch();
     system("cls");
-    switch (k) {
-    case '1':
+    switch (confirm) {
+    case '1':  // 规则介绍
         Introduction_rules();
         system("cls");
         Welcome_interface();
@@ -443,18 +450,15 @@ void Welcome_interface(){
         system("cls");
         Welcome_interface();
         break;
-    case '3':
+    case '3':  // 团队介绍
         Developer_introduction();
         system("cls");
         Welcome_interface();
         break;
-    case '4':
+    case '4':  // 项目历程
         Development_history();
         system("cls");
         Welcome_interface();
-        break;
-    case '5':
-        return;
         break;
     default:
         break;
@@ -477,8 +481,8 @@ void Game_start() {
     // 大本营购物
     Base_camp_store(group_num);
 
-    // 游戏进行  25天
-    for (game_day = 0; game_day < 25; game_day++) {
+    // 游戏进行
+    for (game_day = 0; game_day < ALL_DAY; game_day++) {
         if (Game_end() == 1) {
             break;
         }
@@ -573,11 +577,15 @@ void Game_going(int day) {
     int k;
     cin >> k;
     while (k == 1) {
-        int Team1, Team2;
-        cout << "请输入两队的编号！中间用空格分割。" << endl;
-        cin >> Team1 >> Team2;
+        char Team1, Team2;
+        cout << "请输入两队的编号！中间用空格分割。（若输入有误可以输入c并回车）" << endl;
+        cin >> Team1 ;
+        if (Team1 == 'c') {
+            break;
+        }
+        cin >> Team2;
         Team1--, Team2--;
-        Black_market(Team1,Team2);
+        Black_market(Team1-'0', Team2-'0');
 
         cout << "请问是否存在黑市交易？是（1）/否（0）";
         cin >> k;
@@ -861,6 +869,21 @@ void Weather_action(int ID, int day) {
     system("cls");
 }
 
+// 地图判断
+int Move_map(int ID, string action){
+    for (int i = 0; i < 25; i++) {
+        if (MAP[i][0] == group[ID].locations) {
+            for (int j = 0; j < 10; j++) {
+                if (MAP[i][j] == action) {
+                    return 1;
+                }
+            }
+        }
+    }
+
+    return 0;
+}
+
 // 行动
 void Move_Action(int ID) {
     printf("/***************************************************************************************/\n");
@@ -902,7 +925,12 @@ void Move_Action(int ID) {
         cout << "请输入您的目标地点的编号：";
         cin >> action;
     }
-
+    while (Move_map(ID, action) == 0) {
+        cout << "输入地点不合法，请注意地点编号！" << endl;
+        cout << "请输入您的目标地点的编号：";
+        cin >> action;
+    }
+/*
     int k = 0;
     while (1) {
         k = 0;
@@ -916,7 +944,7 @@ void Move_Action(int ID) {
             break;
         }
     }
-
+*/
     group[ID].locations = action;
 
     system("cls");
@@ -1137,7 +1165,7 @@ int Weather(int day, int locations) {
 
 // 天气列表生成
 void Weather_list() {
-    for (int i = 0; i < 25; i++) {
+    for (int i = 0; i < ALL_DAY; i++) {
         for (int j = 0; j < 5; j++) {
             weather_list[i][j] = Weather(i, j);
         }
@@ -1153,7 +1181,7 @@ void Weather_list_show() {
     printf("/*                                                                                     */\n");
     printf("/*     |  日期  |    沙漠    |    王陵    |    绿洲    |    村庄    |    大山    |     */\n");
     //             /*     | 第01天 |    晴天    |    高温    |   沙尘暴   | 高温沙尘暴 | 高温沙尘暴 |     */ 
-    for (int i = 0; i < 25; i++) {
+    for (int i = 0; i < ALL_DAY; i++) {
         printf("/*     | 第%2d天 |", i + 1);
         for (int j = 0; j < 5; j++) {
             switch (weather_list[i][j]) {
@@ -1167,7 +1195,7 @@ void Weather_list_show() {
     }
     printf("/*                                                                                     */\n");
     printf("/***************************************************************************************/\n");
-    int k;
+    
     cout << "请管理员截图留存！并按任意键确认。";
     confirm = _getch();
     
@@ -1314,6 +1342,32 @@ void Base_camp_store(int num) {
     system("cls");
 
     for (int i = 0; i < num; i++) {
+
+        printf("/***************************************************************************************/\n");
+        printf("/*                                                                                     */\n");
+        printf("/*                   +--------+-----------+--------+--------+-----+                    */\n");
+        printf("/*                   |M       |S01        |S02     |C01     |S03  |                    */\n");
+        printf("/*                   | 大山   |           |        | 村庄   |     |                    */\n");
+        printf("/*                   |        +--------+--+--+-----+--------+     |                    */\n");
+        printf("/*                   +-----+--+        |S06  |S07           |     |                    */\n");
+        printf("/*                   |S04  |   S05     |     |              +-----+                    */\n");
+        printf("/*                   |     |        +--+-----+-----+--------+S10  |                    */\n");
+        printf("/*                   +-----+        | W            | S09    |     |                    */\n");
+        printf("/*                   |C02  +--------+              |-----+  +-----+                    */\n");
+        printf("/*                   |村庄 |S08     |   王   陵    | L01 |  |     |                    */\n");
+        printf("/*                   |     |        |              | 绿洲|  | S13 |                    */\n");
+        printf("/*                   |     |        |              |-----+--+     |                    */\n");
+        printf("/*                   +-----+--------+--+--+-----+--+        |     |                    */\n");
+        printf("/*                   |村庄 |S11        |L02 绿洲|   S12     |     |                    */\n");
+        printf("/*                   |C03  |           +--------+        +--+-----+                    */\n");
+        printf("/*                   +-----+--+--------+--------+--------+D       |                    */\n");
+        printf("/*                   | S14    | C04    | S15             | 大本营 |                    */\n");
+        printf("/*                   |        |  村庄  |     +--------+  |        |                    */\n");
+        printf("/*                   |        |        |     |C05村庄 |  |        |                    */\n");
+        printf("/*                   +--------+--------+-----+--------+--+--------+                    */\n");
+        printf("/*                                                                                     */\n");
+        printf("/***************************************************************************************/\n");
+
         cout << "请输入第" << i + 1 << "组购买的物资！" << endl;
         group[i].ID = i;
 
