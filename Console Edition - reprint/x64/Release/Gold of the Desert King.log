@@ -1,0 +1,11 @@
+﻿  docs.cpp
+D:\GitHub\Gold-of-the-Desert-King\Console Edition - reprint\docs.cpp(11,1): error C2059: 语法错误:“public”
+  main.cpp
+  weahter.cpp
+D:\GitHub\Gold-of-the-Desert-King\Console Edition - reprint\weahter.cpp(58,25): error C2065: “ALL_DAY”: 未声明的标识符
+D:\GitHub\Gold-of-the-Desert-King\Console Edition - reprint\weahter.cpp(60,13): error C2065: “weather_list”: 未声明的标识符
+D:\GitHub\Gold-of-the-Desert-King\Console Edition - reprint\weahter.cpp(74,25): error C2065: “ALL_DAY”: 未声明的标识符
+D:\GitHub\Gold-of-the-Desert-King\Console Edition - reprint\weahter.cpp(77,21): error C2065: “weather_list”: 未声明的标识符
+D:\GitHub\Gold-of-the-Desert-King\Console Edition - reprint\weahter.cpp(90,5): error C2065: “confirm”: 未声明的标识符
+D:\GitHub\Gold-of-the-Desert-King\Console Edition - reprint\weahter.cpp(111,17): error C2065: “weather_list”: 未声明的标识符
+D:\GitHub\Gold-of-the-Desert-King\Console Edition - reprint\weahter.cpp(134,13): error C2065: “weather_list”: 未声明的标识符

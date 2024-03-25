@@ -1,0 +1,505 @@
+Initialize engine version: 2021.3.15f1 (e8e88683f834)
+[Subsystems] Discovering subsystems at path E:/SteamLibrary/steamapps/common/TabletopCreatorDemo/TabletopCreator_Data/UnitySubsystems
+GfxDevice: creating device client; threaded=1; jobified=1
+Renderer: NVIDIA GeForce RTX 3050 Laptop GPU/PCIe/SSE2
+Vendor:   NVIDIA Corporation
+Version:  4.5.0 NVIDIA 546.65
+GLES:     0
+ GL_AMD_multi_draw_indirect GL_AMD_seamless_cubemap_per_texture GL_AMD_vertex_shader_viewport_index GL_AMD_vertex_shader_layer GL_ARB_arrays_of_arrays GL_ARB_base_instance GL_ARB_bindless_texture GL_ARB_blend_func_extended GL_ARB_buffer_storage GL_ARB_clear_buffer_object GL_ARB_clear_texture GL_ARB_clip_control GL_ARB_color_buffer_float GL_ARB_compressed_texture_pixel_storage GL_ARB_conservative_depth GL_ARB_compute_shader GL_ARB_compute_variable_group_size GL_ARB_conditional_render_inverted GL_ARB_copy_buffer GL_ARB_copy_image GL_ARB_cull_distance GL_ARB_debug_output GL_ARB_depth_buffer_float GL_ARB_depth_clamp GL_ARB_depth_texture GL_ARB_derivative_control GL_ARB_direct_state_access GL_ARB_draw_buffers GL_ARB_draw_buffers_blend GL_ARB_draw_indirect GL_ARB_draw_elements_base_vertex GL_ARB_draw_instanced GL_ARB_enhanced_layouts GL_ARB_ES2_compatibility GL_ARB_ES3_compatibility GL_ARB_ES3_1_compatibility GL_ARB_ES3_2_compatibility GL_ARB_explicit_attrib_location GL_ARB_explicit_uniform_location GL_ARB_fragmen
+t_coord_conventions GL_ARB_fragment_layer_viewport GL_ARB_fragment_program GL_ARB_fragment_program_shadow GL_ARB_fragment_shader GL_ARB_fragment_shader_interlock GL_ARB_framebuffer_no_attachments GL_ARB_framebuffer_object GL_ARB_framebuffer_sRGB GL_ARB_geometry_shader4 GL_ARB_get_program_binary GL_ARB_get_texture_sub_image GL_ARB_gl_spirv GL_ARB_gpu_shader5 GL_ARB_gpu_shader_fp64 GL_ARB_gpu_shader_int64 GL_ARB_half_float_pixel GL_ARB_half_float_vertex GL_ARB_imaging GL_ARB_indirect_parameters GL_ARB_instanced_arrays GL_ARB_internalformat_query GL_ARB_internalformat_query2 GL_ARB_invalidate_subdata GL_ARB_map_buffer_alignment GL_ARB_map_buffer_range GL_ARB_multi_bind GL_ARB_multi_draw_indirect GL_ARB_multisample GL_ARB_multitexture GL_ARB_occlusion_query GL_ARB_occlusion_query2 GL_ARB_parallel_shader_compile GL_ARB_pipeline_statistics_query GL_ARB_pixel_buffer_object GL_ARB_point_parameters GL_ARB_point_sprite GL_ARB_polygon_offset_clamp GL_ARB_post_depth_coverage GL_ARB_program_interface_query GL_ARB_provoki
+ng_vertex GL_ARB_query_buffer_object GL_ARB_robust_buffer_access_behavior GL_ARB_robustness GL_ARB_sample_locations GL_ARB_sample_shading GL_ARB_sampler_objects GL_ARB_seamless_cube_map GL_ARB_seamless_cubemap_per_texture GL_ARB_separate_shader_objects GL_ARB_shader_atomic_counter_ops GL_ARB_shader_atomic_counters GL_ARB_shader_ballot GL_ARB_shader_bit_encoding GL_ARB_shader_clock GL_ARB_shader_draw_parameters GL_ARB_shader_group_vote GL_ARB_shader_image_load_store GL_ARB_shader_image_size GL_ARB_shader_objects GL_ARB_shader_precision GL_ARB_shader_storage_buffer_object GL_ARB_shader_subroutine GL_ARB_shader_texture_image_samples GL_ARB_shader_texture_lod GL_ARB_shading_language_100 GL_ARB_shader_viewport_layer_array GL_ARB_shading_language_420pack GL_ARB_shading_language_include GL_ARB_shading_language_packing GL_ARB_shadow GL_ARB_sparse_buffer GL_ARB_sparse_texture GL_ARB_sparse_texture2 GL_ARB_sparse_texture_clamp GL_ARB_spirv_extensions GL_ARB_stencil_texturing GL_ARB_sync GL_ARB_tessellation_shader GL_A
+RB_texture_barrier GL_ARB_texture_border_clamp GL_ARB_texture_buffer_object GL_ARB_texture_buffer_object_rgb32 GL_ARB_texture_buffer_range GL_ARB_texture_compression GL_ARB_texture_compression_bptc GL_ARB_texture_compression_rgtc GL_ARB_texture_cube_map GL_ARB_texture_cube_map_array GL_ARB_texture_env_add GL_ARB_texture_env_combine GL_ARB_texture_env_crossbar GL_ARB_texture_env_dot3 GL_ARB_texture_filter_anisotropic GL_ARB_texture_filter_minmax GL_ARB_texture_float GL_ARB_texture_gather GL_ARB_texture_mirror_clamp_to_edge GL_ARB_texture_mirrored_repeat GL_ARB_texture_multisample GL_ARB_texture_non_power_of_two GL_ARB_texture_query_levels GL_ARB_texture_query_lod GL_ARB_texture_rectangle GL_ARB_texture_rg GL_ARB_texture_rgb10_a2ui GL_ARB_texture_stencil8 GL_ARB_texture_storage GL_ARB_texture_storage_multisample GL_ARB_texture_swizzle GL_ARB_texture_view GL_ARB_timer_query GL_ARB_transform_feedback2 GL_ARB_transform_feedback3 GL_ARB_transform_feedback_instanced GL_ARB_transform_feedback_overflow_query GL_ARB_t
+ranspose_matrix GL_ARB_uniform_buffer_object GL_ARB_vertex_array_bgra GL_ARB_vertex_array_object GL_ARB_vertex_attrib_64bit GL_ARB_vertex_attrib_binding GL_ARB_vertex_buffer_object GL_ARB_vertex_program GL_ARB_vertex_shader GL_ARB_vertex_type_10f_11f_11f_rev GL_ARB_vertex_type_2_10_10_10_rev GL_ARB_viewport_array GL_ARB_window_pos GL_ATI_draw_buffers GL_ATI_texture_float GL_ATI_texture_mirror_once GL_S3_s3tc GL_EXT_texture_env_add GL_EXT_abgr GL_EXT_bgra GL_EXT_bindable_uniform GL_EXT_blend_color GL_EXT_blend_equation_separate GL_EXT_blend_func_separate GL_EXT_blend_minmax GL_EXT_blend_subtract GL_EXT_compiled_vertex_array GL_EXT_Cg_shader GL_EXT_depth_bounds_test GL_EXT_direct_state_access GL_EXT_draw_buffers2 GL_EXT_draw_instanced GL_EXT_draw_range_elements GL_EXT_fog_coord GL_EXT_framebuffer_blit GL_EXT_framebuffer_multisample GL_EXTX_framebuffer_mixed_formats GL_EXT_framebuffer_multisample_blit_scaled GL_EXT_framebuffer_object GL_EXT_framebuffer_sRGB GL_EXT_geometry_shader4 GL_EXT_gpu_program_parameters 
+GL_EXT_gpu_shader4 GL_EXT_multi_draw_arrays GL_EXT_multiview_texture_multisample GL_EXT_multiview_timer_query GL_EXT_packed_depth_stencil GL_EXT_packed_float GL_EXT_packed_pixels GL_EXT_pixel_buffer_object GL_EXT_point_parameters GL_EXT_polygon_offset_clamp GL_EXT_post_depth_coverage GL_EXT_provoking_vertex GL_EXT_raster_multisample GL_EXT_rescale_normal GL_EXT_secondary_color GL_EXT_separate_shader_objects GL_EXT_separate_specular_color GL_EXT_shader_image_load_formatted GL_EXT_shader_image_load_store GL_EXT_shader_integer_mix GL_EXT_shadow_funcs GL_EXT_sparse_texture2 GL_EXT_stencil_two_side GL_EXT_stencil_wrap GL_EXT_texture3D GL_EXT_texture_array GL_EXT_texture_buffer_object GL_EXT_texture_compression_dxt1 GL_EXT_texture_compression_latc GL_EXT_texture_compression_rgtc GL_EXT_texture_compression_s3tc GL_EXT_texture_cube_map GL_EXT_texture_edge_clamp GL_EXT_texture_env_combine GL_EXT_texture_env_dot3 GL_EXT_texture_filter_anisotropic GL_EXT_texture_filter_minmax GL_EXT_texture_integer GL_EXT_texture_lod G
+L_EXT_texture_lod_bias GL_EXT_texture_mirror_clamp GL_EXT_texture_object GL_EXT_texture_shadow_lod GL_EXT_texture_shared_exponent GL_EXT_texture_sRGB GL_EXT_texture_sRGB_R8 GL_EXT_texture_sRGB_decode GL_EXT_texture_storage GL_EXT_texture_swizzle GL_EXT_timer_query GL_EXT_transform_feedback2 GL_EXT_vertex_array GL_EXT_vertex_array_bgra GL_EXT_vertex_attrib_64bit GL_EXT_window_rectangles GL_EXT_import_sync_object GL_IBM_rasterpos_clip GL_IBM_texture_mirrored_repeat GL_KHR_context_flush_control GL_KHR_debug GL_EXT_memory_object GL_EXT_memory_object_win32 GL_NV_memory_object_sparse GL_EXT_win32_keyed_mutex GL_KHR_parallel_shader_compile GL_KHR_no_error GL_KHR_robust_buffer_access_behavior GL_KHR_robustness GL_EXT_semaphore GL_EXT_semaphore_win32 GL_NV_timeline_semaphore GL_KHR_shader_subgroup GL_KTX_buffer_region GL_NV_alpha_to_coverage_dither_control GL_NV_bindless_multi_draw_indirect GL_NV_bindless_multi_draw_indirect_count GL_NV_bindless_texture GL_NV_blend_equation_advanced GL_NV_blend_equation_advanced_cohe
+rent GL_NVX_blend_equation_advanced_multi_draw_buffers GL_NV_blend_minmax_factor GL_NV_blend_square GL_NV_clip_space_w_scaling GL_NV_command_list GL_NV_compute_program5 GL_NV_compute_shader_derivatives GL_NV_conditional_render GL_NV_conservative_raster GL_NV_conservative_raster_dilate GL_NV_conservative_raster_pre_snap GL_NV_conservative_raster_pre_snap_triangles GL_NV_conservative_raster_underestimation GL_NV_copy_depth_to_color GL_NV_copy_image GL_NV_depth_buffer_float GL_NV_depth_clamp GL_NV_draw_texture GL_NV_draw_vulkan_image GL_NV_ES1_1_compatibility GL_NV_ES3_1_compatibility GL_NV_explicit_multisample GL_NV_feature_query GL_NV_fence GL_NV_fill_rectangle GL_NV_float_buffer GL_NV_fog_distance GL_NV_fragment_coverage_to_color GL_NV_fragment_program GL_NV_fragment_program_option GL_NV_fragment_program2 GL_NV_fragment_shader_barycentric GL_NV_fragment_shader_interlock GL_NV_framebuffer_mixed_samples GL_NV_framebuffer_multisample_coverage GL_NV_geometry_shader4 GL_NV_geometry_shader_passthrough GL_NV_gpu_pr
+ogram4 GL_NV_internalformat_sample_query GL_NV_gpu_program4_1 GL_NV_gpu_program5 GL_NV_gpu_program5_mem_extended GL_NV_gpu_program_fp64 GL_NV_gpu_shader5 GL_NV_half_float GL_NV_light_max_exponent GL_NV_memory_attachment GL_NV_mesh_shader GL_NV_multisample_coverage GL_NV_multisample_filter_hint GL_NV_occlusion_query GL_NV_packed_depth_stencil GL_NV_parameter_buffer_object GL_NV_parameter_buffer_object2 GL_NV_path_rendering GL_NV_path_rendering_shared_edge GL_NV_pixel_data_range GL_NV_point_sprite GL_NV_primitive_restart GL_NV_primitive_shading_rate GL_NV_query_resource GL_NV_query_resource_tag GL_NV_register_combiners GL_NV_register_combiners2 GL_NV_representative_fragment_test GL_NV_sample_locations GL_NV_sample_mask_override_coverage GL_NV_scissor_exclusive GL_NV_shader_atomic_counters GL_NV_shader_atomic_float GL_NV_shader_atomic_float64 GL_NV_shader_atomic_fp16_vector GL_NV_shader_atomic_int64 GL_NV_shader_buffer_load GL_NV_shader_storage_buffer_object GL_NV_shader_subgroup_partitioned GL_NV_shader_textur
+e_footprint GL_NV_shading_rate_image GL_NV_stereo_view_rendering GL_NV_texgen_reflection GL_NV_texture_barrier GL_NV_texture_compression_vtc GL_NV_texture_dirty_tile_map GL_NV_texture_env_combine4 GL_NV_texture_multisample GL_NV_texture_rectangle GL_NV_texture_rectangle_compressed GL_NV_texture_shader GL_NV_texture_shader2 GL_NV_texture_shader3 GL_NV_transform_feedback GL_NV_transform_feedback2 GL_NV_uniform_buffer_unified_memory GL_NV_uniform_buffer_std430_layout GL_NV_vertex_array_range GL_NV_vertex_array_range2 GL_NV_vertex_attrib_integer_64bit GL_NV_vertex_buffer_unified_memory GL_NV_vertex_program GL_NV_vertex_program1_1 GL_NV_vertex_program2 GL_NV_vertex_program2_option GL_NV_vertex_program3 GL_NV_viewport_array2 GL_NV_viewport_swizzle GL_NVX_conditional_render GL_NVX_linked_gpu_multicast GL_NV_gpu_multicast GL_NVX_gpu_multicast2 GL_NVX_progress_fence GL_NVX_gpu_memory_info GL_NVX_multigpu_info GL_NVX_nvenc_interop GL_NV_shader_thread_group GL_NV_shader_thread_shuffle GL_KHR_blend_equation_advanced GL_
+KHR_blend_equation_advanced_coherent GL_OVR_multiview GL_OVR_multiview2 GL_SGIS_generate_mipmap GL_SGIS_texture_lod GL_SGIX_depth_texture GL_SGIX_shadow GL_SUN_slice_accum GL_WIN_swap_hint WGL_EXT_swap_control
+OPENGL LOG: Creating OpenGL 4.5 graphics device ; Context level  <OpenGL 4.5> ; Context handle 65537
+Microsoft Media Foundation video decoding to texture disabled: graphics device is OpenGL Core, only Direct3D 11 and Direct3D 12 (only on desktop) are supported for hardware-accelerated video decoding.
+<RI> Initializing input.
+<RI> Input initialized.
+<RI> Initialized touch support.
+UnloadTime: 0.312500 ms
+18:40:46 [Settings] Loaded settings
+18:40:46 [Event] LanguageChangeEvent [Lang: zh]
+18:40:46 [AnalyticsGA] Generated new Client ID: 1fa888d2-08b1-4ed4-bf0d-4de848e9077c
+18:40:47 [Font] Exception loading font: C:/Windows/Fonts/mstmc.ttf
+18:40:47 [Font] EndOfStreamException: End of stream reached with 4 byte left to read.
+  at SixLabors.Fonts.BigEndianBinaryReader.ReadInternal (System.Byte[] data, System.Int32 size) [0x00000] in <00000000000000000000000000000000>:0 
+  at SixLabors.Fonts.BigEndianBinaryReader.ReadUInt32 () [0x00000] in <00000000000000000000000000000000>:0 
+  at SixLabors.Fonts.Tables.TableHeader.Read (SixLabors.Fonts.BigEndianBinaryReader reader) [0x00000] in <00000000000000000000000000000000>:0 
+  at SixLabors.Fonts.FontReader..ctor (System.IO.Stream stream, SixLabors.Fonts.Tables.TableLoader loader) [0x00000] in <00000000000000000000000000000000>:0 
+  at SixLabors.Fonts.FontDescription.LoadDescription (System.String path) [0x00000] in <00000000000000000000000000000000>:0 
+  at TabletopCreator.Services.FontService.GetFontsInFolder (System.String path) [0x00000] in <00000000000000000000000000000000>:0 
+  at TabletopCreator.Services.FontService.LoadSystemFonts () [0x00000] in <00000000000000000000000000000000>:0 
+  at TabletopCreator.Services.FontService.Ju.Services.IServiceLoad.Load () [0x00000] in <00000000000000000000000000000000>:0 
+  at Ju.Services.ServiceContainer.Get[T] (System.String id) [0x00000] in <00000000000000000000000000000000>:0 
+  at TabletopCreator.Bootstrap.RegisterServices () [0x00000] in <00000000000000000000000000000000>:0 
+  at TabletopCreator.Bootstrap.Init () [0x00000] in <00000000000000000000000000000000>:0 
+[Patch] Steam build detected
+Unloading 5 Unused Serialized files (Serialized files now loaded: 0)
+Unloading 8 unused Assets to reduce memory usage. Loaded Objects now: 2284.
+Total: 1.519500 ms (FindLiveObjects: 0.177500 ms CreateObjectMapping: 0.079200 ms MarkObjects: 1.229800 ms  DeleteObjects: 0.032600 ms)
+Unloading 5 Unused Serialized files (Serialized files now loaded: 0)
+UnloadTime: 0.633900 ms
+18:40:49 [Event] AppVersionChangeEvent [Version: Pro]
+18:40:49 [Environment] UID: de47170470e408fddf00dc0b9c729ea8f850698608abe68fc611f103284a3b24 (BGUID: e769aa372adb67748b615fbcdbccaa2f)
+18:40:49 [Environment] APP: TabletopCreator 2024.3.5 r768 Steam  aade910b2838fea7794ac8b0d5176445
+18:40:49 [Environment] BUILD: WindowsPlayer x64 20240319_085526 UTC (UNITY: 2021.3.15f1) (LANG: zh) (DATE: 20240325_104049)
+18:40:49 [Environment] OS: Windows 10  (10.0.19045) 64bit (x64) (LANG: ChineseSimplified), CPU: AMD Ryzen 5 5600H with Radeon Graphics  (Logical Cores: 12), RAM: 31.86 GB
+18:40:49 [Environment] GPU: NVIDIA Corporation - NVIDIA GeForce RTX 3050 Laptop GPU/PCIe/SSE2, GPU_DRIVER: OpenGLCore (OpenGL 4.5.0 NVIDIA 546.65), VRAM: 3.88 GB, SCREEN DPI: 96
+18:40:49 [Environment] SHADER_LEVEL: 50, MAX_TEXTURE_SIZE: 32768, COPY_TEXTURE_SUPPORT: Basic, Copy3D, DifferentTypes, TextureToRT, RTToTexture, COLOR SPACE: Gamma
+18:40:49 [Settings] App Theme: Light
+18:40:49 [Settings] UI scaling: x1
+18:40:49 [Settings] Use metric unit system: True
+18:40:49 [Settings] Use font point unit system: False
+18:40:49 [Settings] Automatic backup interval: 300s
+18:40:49 [Settings] Use single file project data: False
+18:40:49 [Settings] Max history commands: 1000
+18:40:49 [Settings] Set items min zoom size: 1cm
+18:40:49 [Settings] Set items max zoom multiplier: x3
+18:40:49 [Settings] Preview max size multiplier: x10
+18:40:49 [Settings] Warmup data import screens on startup: 100%
+18:40:49 [Settings] Max render texture size: 2048px
+18:40:49 [Settings] Use mipmaps in texture panels: True
+18:40:49 [Settings] Blueprint preview texture downscale: x1
+18:40:49 [Settings] Collection preview texture downscale: x1
+18:40:49 [Settings] Export preview texture downscale: x1
+18:40:49 [Settings] Use mipmaps in preview textures: True
+18:40:49 [Settings] Use mipmaps in export preview textures: True
+18:40:49 [Settings] Use mipmaps in icon picker widget textures: True
+18:40:49 [Shortcut] Registered: Ctrl+T -> Collection Screen - Toggle item previews in all sets
+18:40:49 [Shortcut] Registered: Home -> Blueprint editor - Fit preview in viewport
+18:40:49 [Shortcut] Registered: End -> Blueprint editor - Set preview to physical size
+18:40:49 [Shortcut] Registered: Ctrl+B -> Blueprint editor - Toggle preview bleeding
+18:40:49 [Shortcut] Registered: Ctrl+G -> Blueprint editor - Toggle grid visibility
+18:40:49 [Shortcut] Registered: Ctrl+N -> Blueprint editor - Toggle snapping
+18:40:49 [Shortcut] Registered: F2 -> Blueprint editor - Rename selected
+18:40:49 [Shortcut] Registered: Ctrl+Delete -> Blueprint editor - Delete selected
+18:40:49 [Shortcut] Registered: Ctrl+UpArrow -> Blueprint editor - Move up selected
+18:40:49 [Shortcut] Registered: Ctrl+DownArrow -> Blueprint editor - Move down selected
+18:40:49 [Shortcut] Registered: Ctrl+D -> Blueprint editor - Duplicate selected
+18:40:49 [Shortcut] Registered: Ctrl+L -> Blueprint editor - New layer
+18:40:49 [Shortcut] Registered: Ctrl+P -> Blueprint editor - New panel
+18:40:49 [Shortcut] Registered: UpArrow -> Blueprint editor - Select previous
+18:40:49 [Shortcut] Registered: DownArrow -> Blueprint editor - Select next
+18:40:49 [Shortcut] Registered: Ctrl+Shift+Delete -> Blueprint editor - Reset panels
+18:40:49 [Shortcut] Registered: Ctrl+C -> Blueprint editor - Copy
+18:40:49 [Shortcut] Registered: Ctrl+Alt+X -> Blueprint editor - Cut
+18:40:49 [Shortcut] Registered: Ctrl+V -> Blueprint editor - Paste data
+18:40:49 [Shortcut] Registered: Ctrl+Shift+V -> Blueprint editor - Paste layout
+18:40:49 [Shortcut] Registered: Ctrl+Alt+V -> Blueprint editor - Paste as new
+18:40:49 [Shortcut] Registered: Home -> Item editor - Fit preview in viewport
+18:40:49 [Shortcut] Registered: End -> Item editor - Set preview to physical size
+18:40:49 [Shortcut] Registered: Ctrl+Shift+Delete -> Item editor - Reset panels
+18:40:49 [Shortcut] Registered: F11 -> Screen scaler - Toggle full screen
+18:40:49 [Shortcut] Registered: Ctrl+Return -> Screen scaler - Toggle full screen
+18:40:49 [Shortcut] Registered: Ctrl+C -> Item editor - Copy panel data
+18:40:49 [Shortcut] Registered: Ctrl+V -> Item editor - Paste panel data
+18:40:49 [Shortcut] Registered: Escape -> Item editor - Close
+18:40:49 [Shortcut] Registered: PageUp -> Item editor - Previous item
+18:40:49 [Shortcut] Registered: F7 -> Item editor - Previous item
+18:40:49 [Shortcut] Registered: PageDown -> Item editor - Next item
+18:40:49 [Shortcut] Registered: F8 -> Item editor - Next item
+18:40:49 [PoolAsync] Set pool capacity target to 50 for ImportExcel_SetMapping prefab
+18:40:49 [PoolAsync] Set pool capacity target to 2000 for ImportExcel_DetailMapping prefab
+18:40:49 [Shortcut] Registered: Ctrl+S -> Menu - Save
+18:40:49 [Shortcut] Registered: Ctrl+Z -> History - Undo
+18:40:49 [Shortcut] Registered: Ctrl+Shift+Z -> History - Redo
+18:40:49 [Shortcut] Registered: F5 -> Menu - Previous localization
+18:40:49 [Shortcut] Registered: F6 -> Menu - Next localization
+18:40:49 [PoolAsync] Set pool capacity target to 1000 for ImportCSV_DetailMapping prefab
+Unloading 14 unused Assets to reduce memory usage. Loaded Objects now: 72867.
+Total: 24.298900 ms (FindLiveObjects: 2.811700 ms CreateObjectMapping: 1.186700 ms MarkObjects: 20.138400 ms  DeleteObjects: 0.161500 ms)
+Unloading 2 Unused Serialized files (Serialized files now loaded: 0)
+Unloading 0 unused Assets to reduce memory usage. Loaded Objects now: 72867.
+Total: 25.881200 ms (FindLiveObjects: 3.948500 ms CreateObjectMapping: 0.972000 ms MarkObjects: 20.883500 ms  DeleteObjects: 0.076800 ms)
+18:40:50 [Shortcut] Registered: Ctrl+Num1 -> Screen switcher - Go to blueprint manager screen
+18:40:50 [Shortcut] Registered: Ctrl+Num2 -> Screen switcher - Go to components screen
+18:40:50 [Shortcut] Registered: Ctrl+Num3 -> Screen switcher - Go to variables screen
+18:40:50 [Shortcut] Registered: Ctrl+Num4 -> Screen switcher - Go to export screen
+18:40:50 [Window] Set Maximized: False
+18:40:50 [Event] ScreenSwitchFinishEvent
+18:40:50 [PoolAsync] Target pool capacity 50 reached for ImportExcel_SetMapping prefab
+18:40:52 [AnalyticsGA] Internet connectivity: False
+18:41:07 [PoolAsync] Target pool capacity 2000 reached for ImportExcel_DetailMapping prefab
+18:41:10 [AnalyticsGA] Event request: project:new
+18:41:10 [Project] New: D:/GitHub/Gold-of-the-Desert-King/Sid-Meier’s-CivilizationVI/card cc
+18:41:10 [Event] ProjectNewEvent [FolderPath: D:/GitHub/Gold-of-the-Desert-King/Sid-Meier’s-CivilizationVI/card cc]
+18:41:10 [AnalyticsGA] Event request: project:load
+Unloading 1 Unused Serialized files (Serialized files now loaded: 0)
+18:41:10 [Project] Load: D:/GitHub/Gold-of-the-Desert-King/Sid-Meier’s-CivilizationVI/card cc/card cc.tcp
+18:41:10 [Deserializer] Deserializing JSON file: D:\GitHub\Gold-of-the-Desert-King\Sid-Meier’s-CivilizationVI\card cc\data\export.json
+18:41:10 [Deserializer] Deserializing JSON file: D:\GitHub\Gold-of-the-Desert-King\Sid-Meier’s-CivilizationVI\card cc\data\project.json
+18:41:10 [Deserializer] Deserializing JSON file: D:\GitHub\Gold-of-the-Desert-King\Sid-Meier’s-CivilizationVI\card cc\data\variables.json
+18:41:10 [Deserializer] Deserializing JSON file: D:\GitHub\Gold-of-the-Desert-King\Sid-Meier’s-CivilizationVI\card cc\data\workspace.json
+18:41:10 [Environment] UID: de47170470e408fddf00dc0b9c729ea8f850698608abe68fc611f103284a3b24 (BGUID: e769aa372adb67748b615fbcdbccaa2f)
+18:41:10 [Environment] APP: TabletopCreator 2024.3.5 r768 Steam  aade910b2838fea7794ac8b0d5176445
+18:41:10 [Environment] BUILD: WindowsPlayer x64 20240319_085526 UTC (UNITY: 2021.3.15f1) (LANG: zh) (DATE: 20240325_104110)
+18:41:10 [Environment] OS: Windows 10  (10.0.19045) 64bit (x64) (LANG: ChineseSimplified), CPU: AMD Ryzen 5 5600H with Radeon Graphics  (Logical Cores: 12), RAM: 31.86 GB
+18:41:10 [Environment] GPU: NVIDIA Corporation - NVIDIA GeForce RTX 3050 Laptop GPU/PCIe/SSE2, GPU_DRIVER: OpenGLCore (OpenGL 4.5.0 NVIDIA 546.65), VRAM: 3.88 GB, SCREEN DPI: 96
+18:41:10 [Environment] SHADER_LEVEL: 50, MAX_TEXTURE_SIZE: 32768, COPY_TEXTURE_SUPPORT: Basic, Copy3D, DifferentTypes, TextureToRT, RTToTexture, COLOR SPACE: Gamma
+18:41:10 [Settings] App Theme: Light
+18:41:10 [Settings] UI scaling: x1
+18:41:10 [Settings] Use metric unit system: True
+18:41:10 [Settings] Use font point unit system: False
+18:41:10 [Settings] Automatic backup interval: 300s
+18:41:10 [Settings] Use single file project data: False
+18:41:10 [Settings] Max history commands: 1000
+18:41:10 [Settings] Set items min zoom size: 1cm
+18:41:10 [Settings] Set items max zoom multiplier: x3
+18:41:10 [Settings] Preview max size multiplier: x10
+18:41:10 [Settings] Warmup data import screens on startup: 100%
+18:41:10 [Settings] Max render texture size: 2048px
+18:41:10 [Settings] Use mipmaps in texture panels: True
+18:41:10 [Settings] Blueprint preview texture downscale: x1
+18:41:10 [Settings] Collection preview texture downscale: x1
+18:41:10 [Settings] Export preview texture downscale: x1
+18:41:10 [Settings] Use mipmaps in preview textures: True
+18:41:10 [Settings] Use mipmaps in export preview textures: True
+18:41:10 [Settings] Use mipmaps in icon picker widget textures: True
+18:41:10 [Event] ProjectLoadEvent [FilePath: D:/GitHub/Gold-of-the-Desert-King/Sid-Meier’s-CivilizationVI/card cc/card cc.tcp]
+18:41:10 [History] Clear
+18:41:10 [History] Push: BlueprintNew
+18:41:10 [Event] BlueprintNewEvent [Blueprint: blueprint_001]
+18:41:10 [Project] Set Dirty
+18:41:10 [History] Push: BlueprintChangeType
+18:41:10 [Event] BlueprintChangeTypeEvent [Blueprint: blueprint_001, Type: Card]
+18:41:10 [History] Push: BlueprintSetLayoutSize
+18:41:10 [Event] BlueprintSetLayoutSizeEvent [Blueprint: blueprint_001, LayoutSize: 57, 89]
+18:41:10 [History] Push: BlueprintNewLayer
+18:41:10 [Event] BlueprintLayerNewEvent [Layer: layer_001]
+18:41:10 [History] Push: BlueprintLayerRename
+18:41:10 [Event] BlueprintLayerRenameEvent [Layer: default_front]
+18:41:10 [History] Push: BlueprintUpdateShapeSettings
+18:41:10 [Event] BlueprintUpdateShapeSettingsEvent [Blueprint: blueprint_001, Shape: Rectangle, UniformRadius: True, Radius: 5, RadiusTL: 0, RadiusTR: 0, RadiusBR: 0, RadiusBL: 0, EllipseWidth: 100, EllipseHeight: 100, EllipseRotation: 0, PolygonVertices: 6, PolygonStarAngle: 0, PolygonRoundness: 0, PolygonRotation: 0, CustomMaskPath: , CustomMaskRotation: 0]
+18:41:10 [History] Push: BlueprintLayerNewPanel
+18:41:10 [Event] BlueprintPanelNewEvent [Panel: panel_001]
+18:41:10 [History] Push: BlueprintPanelRename
+18:41:10 [Event] BlueprintPanelRenameEvent [Panel: text_top, PrevName: panel_001]
+18:41:10 [History] Push: BlueprintPanelSetLayout
+18:41:10 [Event] BlueprintPanelSetLayoutEvent [Panel: text_top, Position: 7, 5, Size: 43, 19.75, Rotation: 0]
+18:41:10 [History] Push: BlueprintPanelSetData
+18:41:10 [Event] BlueprintPanelSetDataEvent [Panel: text_top, ID: layout_constraint_h, Localization: , Data: left_and_right]
+18:41:10 [History] Push: BlueprintPanelSetData
+18:41:10 [Event] BlueprintPanelSetDataEvent [Panel: text_top, ID: layout_constraint_v, Localization: , Data: top]
+18:41:10 [History] Push: BlueprintPanelSetData
+18:41:10 [Event] BlueprintPanelSetDataEvent [Panel: text_top, ID: panel_type, Localization: , Data: text]
+18:41:10 [History] Push: BlueprintPanelSetData
+18:41:10 [Event] BlueprintPanelSetDataEvent [Panel: text_top, ID: value, Localization: , Data: <b>Placeholder</b>]
+18:41:10 [History] Push: BlueprintPanelSetData
+18:41:10 [Event] BlueprintPanelSetDataEvent [Panel: text_top, ID: text_font, Localization: , Data: Noto Sans]
+18:41:10 [History] Push: BlueprintPanelSetData
+18:41:10 [Event] BlueprintPanelSetDataEvent [Panel: text_top, ID: text_wrapping, Localization: , Data: False]
+18:41:10 [History] Push: BlueprintPanelSetData
+18:41:10 [Event] BlueprintPanelSetDataEvent [Panel: text_top, ID: text_size, Localization: , Data: 3]
+18:41:10 [History] Push: BlueprintPanelSetData
+18:41:10 [Event] BlueprintPanelSetDataEvent [Panel: text_top, ID: text_autosize, Localization: , Data: True]
+18:41:10 [History] Push: BlueprintPanelSetData
+18:41:10 [Event] BlueprintPanelSetDataEvent [Panel: text_top, ID: text_size_max, Localization: , Data: 30]
+18:41:10 [History] Push: BlueprintPanelSetData
+18:41:10 [Event] BlueprintPanelSetDataEvent [Panel: text_top, ID: color, Localization: , Data: #454545]
+18:41:10 [History] Push: BlueprintLayerNewPanel
+18:41:10 [Event] BlueprintPanelNewEvent [Panel: panel_001]
+18:41:10 [History] Push: BlueprintPanelRename
+18:41:10 [Event] BlueprintPanelRenameEvent [Panel: text_bottom, PrevName: panel_001]
+18:41:10 [History] Push: BlueprintPanelSetLayout
+18:41:10 [Event] BlueprintPanelSetLayoutEvent [Panel: text_bottom, Position: 28.5, 64.25, Size: 21.5, 19.75, Rotation: 0]
+18:41:10 [History] Push: BlueprintPanelSetData
+18:41:10 [Event] BlueprintPanelSetDataEvent [Panel: text_bottom, ID: layout_constraint_h, Localization: , Data: right]
+18:41:10 [History] Push: BlueprintPanelSetData
+18:41:10 [Event] BlueprintPanelSetDataEvent [Panel: text_bottom, ID: layout_constraint_v, Localization: , Data: bottom]
+18:41:10 [History] Push: BlueprintPanelSetData
+18:41:10 [Event] BlueprintPanelSetDataEvent [Panel: text_bottom, ID: panel_type, Localization: , Data: text]
+18:41:10 [History] Push: BlueprintPanelSetData
+18:41:10 [Event] BlueprintPanelSetDataEvent [Panel: text_bottom, ID: value, Localization: , Data: {layout|mm}\n{layout|in}]
+18:41:10 [History] Push: BlueprintPanelSetData
+18:41:10 [Event] BlueprintPanelSetDataEvent [Panel: text_bottom, ID: text_font, Localization: , Data: Noto Sans]
+18:41:10 [History] Push: BlueprintPanelSetData
+18:41:10 [Event] BlueprintPanelSetDataEvent [Panel: text_bottom, ID: text_wrapping, Localization: , Data: False]
+18:41:10 [History] Push: BlueprintPanelSetData
+18:41:10 [Event] BlueprintPanelSetDataEvent [Panel: text_bottom, ID: text_size, Localization: , Data: 2]
+18:41:10 [History] Push: BlueprintPanelSetData
+18:41:10 [Event] BlueprintPanelSetDataEvent [Panel: text_bottom, ID: text_autosize, Localization: , Data: True]
+18:41:10 [History] Push: BlueprintPanelSetData
+18:41:10 [Event] BlueprintPanelSetDataEvent [Panel: text_bottom, ID: text_alignment_h, Localization: , Data: right]
+18:41:10 [History] Push: BlueprintPanelSetData
+18:41:10 [Event] BlueprintPanelSetDataEvent [Panel: text_bottom, ID: color, Localization: , Data: #454545]
+18:41:10 [History] Push: BlueprintLayerNewPanel
+18:41:10 [Event] BlueprintPanelNewEvent [Panel: panel_001]
+18:41:10 [History] Push: BlueprintPanelRename
+18:41:10 [Event] BlueprintPanelRenameEvent [Panel: logo, PrevName: panel_001]
+18:41:10 [History] Push: BlueprintPanelSetLayout
+18:41:10 [Event] BlueprintPanelSetLayoutEvent [Panel: logo, Position: 5, 24.75, Size: 47, 39.5, Rotation: 0]
+18:41:10 [History] Push: BlueprintPanelSetData
+18:41:10 [Event] BlueprintPanelSetDataEvent [Panel: logo, ID: layout_constraint_h, Localization: , Data: left_and_right]
+18:41:10 [History] Push: BlueprintPanelSetData
+18:41:10 [Event] BlueprintPanelSetDataEvent [Panel: logo, ID: layout_constraint_v, Localization: , Data: top_and_bottom]
+18:41:10 [History] Push: BlueprintPanelSetData
+18:41:10 [Event] BlueprintPanelSetDataEvent [Panel: logo, ID: panel_type, Localization: , Data: image]
+18:41:10 [History] Push: BlueprintPanelSetData
+18:41:10 [Event] BlueprintPanelSetDataEvent [Panel: logo, ID: value, Localization: , Data: TC/Icon]
+18:41:10 [History] Push: BlueprintLayerNewPanel
+18:41:10 [Event] BlueprintPanelNewEvent [Panel: panel_001]
+18:41:10 [History] Push: BlueprintPanelRename
+18:41:10 [Event] BlueprintPanelRenameEvent [Panel: color, PrevName: panel_001]
+18:41:10 [History] Push: BlueprintPanelSetLayout
+18:41:10 [Event] BlueprintPanelSetLayoutEvent [Panel: color, Position: 5, 5, Size: 47, 79, Rotation: 0]
+18:41:10 [History] Push: BlueprintPanelSetData
+18:41:10 [Event] BlueprintPanelSetDataEvent [Panel: color, ID: layout_constraint_h, Localization: , Data: left_and_right]
+18:41:10 [History] Push: BlueprintPanelSetData
+18:41:10 [Event] BlueprintPanelSetDataEvent [Panel: color, ID: layout_constraint_v, Localization: , Data: top_and_bottom]
+18:41:10 [History] Push: BlueprintPanelSetData
+18:41:10 [Event] BlueprintPanelSetDataEvent [Panel: color, ID: panel_type, Localization: , Data: procedural]
+18:41:10 [History] Push: BlueprintPanelSetData
+18:41:10 [Event] BlueprintPanelSetDataEvent [Panel: color, ID: procedural_radius, Localization: , Data: 3]
+18:41:10 [History] Push: BlueprintPanelSetData
+18:41:10 [Event] BlueprintPanelSetDataEvent [Panel: color, ID: panel_editable, Localization: , Data: False]
+18:41:10 [History] Push: BlueprintPanelSetData
+18:41:10 [Event] BlueprintPanelSetDataEvent [Panel: color, ID: color, Localization: , Data: #FFFFFF]
+18:41:10 [History] Push: BlueprintLayerNewPanel
+18:41:10 [Event] BlueprintPanelNewEvent [Panel: panel_001]
+18:41:10 [History] Push: BlueprintPanelRename
+18:41:10 [Event] BlueprintPanelRenameEvent [Panel: border, PrevName: panel_001]
+18:41:10 [History] Push: BlueprintPanelSetLayout
+18:41:10 [Event] BlueprintPanelSetLayoutEvent [Panel: border, Position: -5, -5, Size: 67, 99, Rotation: 0]
+18:41:10 [History] Push: BlueprintPanelSetData
+18:41:10 [Event] BlueprintPanelSetDataEvent [Panel: border, ID: layout_constraint_h, Localization: , Data: left_and_right]
+18:41:10 [History] Push: BlueprintPanelSetData
+18:41:10 [Event] BlueprintPanelSetDataEvent [Panel: border, ID: layout_constraint_v, Localization: , Data: top_and_bottom]
+18:41:10 [History] Push: BlueprintPanelSetData
+18:41:10 [Event] BlueprintPanelSetDataEvent [Panel: border, ID: panel_type, Localization: , Data: procedural]
+18:41:10 [History] Push: BlueprintPanelSetData
+18:41:10 [Event] BlueprintPanelSetDataEvent [Panel: border, ID: panel_editable, Localization: , Data: False]
+18:41:10 [History] Push: BlueprintPanelSetData
+18:41:10 [Event] BlueprintPanelSetDataEvent [Panel: border, ID: color, Localization: , Data: #25809C]
+18:41:10 [History] Push: BlueprintNewLayer
+18:41:10 [Event] BlueprintLayerNewEvent [Layer: layer_001]
+18:41:10 [History] Push: BlueprintLayerRename
+18:41:10 [Event] BlueprintLayerRenameEvent [Layer: default_back]
+18:41:10 [History] Push: BlueprintLayerNewPanel
+18:41:10 [Event] BlueprintPanelNewEvent [Panel: panel_001]
+18:41:10 [History] Push: BlueprintPanelRename
+18:41:10 [Event] BlueprintPanelRenameEvent [Panel: back_logo, PrevName: panel_001]
+18:41:10 [History] Push: BlueprintPanelSetLayout
+18:41:10 [Event] BlueprintPanelSetLayoutEvent [Panel: back_logo, Position: 0, 0, Size: 57, 89, Rotation: 0]
+18:41:10 [History] Push: BlueprintPanelSetData
+18:41:10 [Event] BlueprintPanelSetDataEvent [Panel: back_logo, ID: layout_constraint_h, Localization: , Data: left_and_right]
+18:41:10 [History] Push: BlueprintPanelSetData
+18:41:10 [Event] BlueprintPanelSetDataEvent [Panel: back_logo, ID: layout_constraint_v, Localization: , Data: top_and_bottom]
+18:41:10 [History] Push: BlueprintPanelSetData
+18:41:10 [Event] BlueprintPanelSetDataEvent [Panel: back_logo, ID: panel_type, Localization: , Data: image]
+18:41:10 [History] Push: BlueprintPanelSetData
+18:41:10 [Event] BlueprintPanelSetDataEvent [Panel: back_logo, ID: panel_editable, Localization: , Data: False]
+18:41:10 [History] Push: BlueprintPanelSetData
+18:41:10 [Event] BlueprintPanelSetDataEvent [Panel: back_logo, ID: value, Localization: , Data: TC/Logo]
+18:41:10 [History] Push: BlueprintPanelSetData
+18:41:10 [Event] BlueprintPanelSetDataEvent [Panel: back_logo, ID: img_zoom, Localization: , Data: 0.75]
+18:41:10 [History] Push: BlueprintLayerNewPanel
+18:41:10 [Event] BlueprintPanelNewEvent [Panel: panel_001]
+18:41:10 [History] Push: BlueprintPanelRename
+18:41:10 [Event] BlueprintPanelRenameEvent [Panel: back_color, PrevName: panel_001]
+18:41:10 [History] Push: BlueprintPanelSetLayout
+18:41:10 [Event] BlueprintPanelSetLayoutEvent [Panel: back_color, Position: -25, -25, Size: 107, 139, Rotation: 0]
+18:41:10 [History] Push: BlueprintPanelSetData
+18:41:10 [Event] BlueprintPanelSetDataEvent [Panel: back_color, ID: layout_constraint_h, Localization: , Data: left_and_right]
+18:41:10 [History] Push: BlueprintPanelSetData
+18:41:10 [Event] BlueprintPanelSetDataEvent [Panel: back_color, ID: layout_constraint_v, Localization: , Data: top_and_bottom]
+18:41:10 [History] Push: BlueprintPanelSetData
+18:41:10 [Event] BlueprintPanelSetDataEvent [Panel: back_color, ID: panel_type, Localization: , Data: procedural]
+18:41:10 [History] Push: BlueprintPanelSetData
+18:41:10 [Event] BlueprintPanelSetDataEvent [Panel: back_color, ID: panel_editable, Localization: , Data: False]
+18:41:10 [History] Push: BlueprintPanelSetData
+18:41:10 [Event] BlueprintPanelSetDataEvent [Panel: back_color, ID: color, Localization: , Data: #25809C]
+18:41:10 [History] Push: SetNew
+18:41:10 [Event] SetNewEvent [Set: set_001]
+18:41:10 [Event] CollectionScreenToggleSetPreviewEvent [Set: set_001, Collapsed: True]
+18:41:10 [History] Push: UICollectionToggleSet (Composite)
+18:41:10 [History] Push: UICollectionToggleSet (Composite)
+18:41:10 [History] Push: SetChangeBlueprint
+18:41:10 [Event] SetChangeBlueprintEvent [Set: set_001, Blueprint: blueprint_001]
+18:41:10 [Event] CollectionScreenToggleSetPreviewEvent [Set: set_001, Collapsed: True]
+18:41:10 [History] Push: SetNewItem
+18:41:10 [Event] SetItemNewEvent
+18:41:10 [Event] CollectionScreenToggleSetPreviewEvent [Set: set_001, Collapsed: False]
+18:41:10 [History] Push: UICollectionToggleSet
+18:41:10 [History] Clear
+18:41:10 [AnalyticsGA] Event request: project:save
+18:41:10 [Project] Save
+18:41:10 [Event] ProjectSaveEvent
+18:41:10 [History] Push: UIScreenSwitch
+18:41:10 [Event] ScreenSwitchEvent [Screen: BlueprintManager]
+18:41:10 [AnalyticsGA] Event request: general:switch_screen:BlueprintManager
+Unloading 6 unused Assets to reduce memory usage. Loaded Objects now: 1333207.
+Total: 401.644600 ms (FindLiveObjects: 81.115000 ms CreateObjectMapping: 16.376000 ms MarkObjects: 298.519900 ms  DeleteObjects: 5.633200 ms)
+18:41:11 [Font] Load system font: Noto Sans
+18:41:11 [Event] TextureRenderEvent [Blueprint: blueprint_001, Side: Front, TimeMs: 21, IgnoreLayerVisibility: True, Scaling: 1, Bleeding: 0, Linear: False ]
+18:41:11 [Event] TextureRenderEvent [Blueprint: blueprint_001, Side: Back, TimeMs: 5, IgnoreLayerVisibility: True, Scaling: 1, Bleeding: 0, Linear: False ]
+18:41:11 [Event] ScreenSwitchFinishEvent
+18:41:13 [History] Push: UIScreenSwitch
+18:41:13 [Event] ScreenSwitchEvent [Screen: Collection]
+18:41:13 [AnalyticsGA] Event request: general:switch_screen:Collection
+18:41:13 [Event] TextureRenderEvent [Blueprint: blueprint_001, Side: Front, TimeMs: 9, IgnoreLayerVisibility: True, Scaling: 1, Bleeding: 0, Linear: False ]
+18:41:13 [Event] TextureRenderEvent [Blueprint: blueprint_001, Side: Back, TimeMs: 4, IgnoreLayerVisibility: True, Scaling: 1, Bleeding: 0, Linear: False ]
+18:41:14 [Event] ScreenSwitchFinishEvent
+18:41:15 [History] Push: UIScreenSwitch
+18:41:15 [Event] ScreenSwitchEvent [Screen: BlueprintManager]
+18:41:15 [AnalyticsGA] Event request: general:switch_screen:BlueprintManager
+18:41:15 [Event] ScreenSwitchFinishEvent
+18:41:15 [History] Push: UIScreenSwitch
+18:41:15 [Event] ScreenSwitchEvent [Screen: Collection]
+18:41:15 [AnalyticsGA] Event request: general:switch_screen:Collection
+18:41:16 [Event] ScreenSwitchFinishEvent
+18:41:16 [History] Push: UIScreenSwitch
+18:41:16 [Event] ScreenSwitchEvent [Screen: BlueprintManager]
+18:41:16 [AnalyticsGA] Event request: general:switch_screen:BlueprintManager
+18:41:17 [PoolAsync] Target pool capacity 1000 reached for ImportCSV_DetailMapping prefab
+18:41:17 [Event] ScreenSwitchFinishEvent
+18:41:20 [Event] CursorScreenExitEvent
+18:41:25 [AnalyticsGA] Event request: project:save
+18:41:25 [Project] Save
+18:41:25 [Event] ProjectSaveEvent
+18:41:27 [History] Push: UIBlueprintSelectBlueprint
+18:41:27 [Event] BlueprintScreenSelectBlueprintEvent [Blueprint: blueprint_001]
+18:41:27 [History] Push: UIScreenSwitch (Composite)
+18:41:27 [Event] ScreenSwitchEvent [Screen: BlueprintEditor]
+18:41:27 [AnalyticsGA] Event request: general:switch_screen:BlueprintEditor
+18:41:27 [Event] TextureRenderEvent [Blueprint: blueprint_001, Side: Front, TimeMs: 16, IgnoreLayerVisibility: False, Scaling: 1, Bleeding: 0, Linear: False ]
+18:41:27 [Event] TextureRenderEvent [Blueprint: blueprint_001, Side: Back, TimeMs: 4, IgnoreLayerVisibility: False, Scaling: 1, Bleeding: 0, Linear: False ]
+18:41:28 [Event] ScreenSwitchFinishEvent
+18:41:29 [History] Push: UIScreenSwitch
+18:41:29 [Event] ScreenSwitchEvent [Screen: Collection]
+18:41:29 [AnalyticsGA] Event request: general:switch_screen:Collection
+18:41:30 [Event] ScreenSwitchFinishEvent
+18:41:31 [History] Push: SetNewItem
+18:41:31 [Event] SetItemNewEvent
+18:41:31 [Project] Set Dirty
+18:41:31 [Event] TextureRenderEvent [Blueprint: blueprint_001, Side: Front, TimeMs: 9, IgnoreLayerVisibility: True, Scaling: 1, Bleeding: 0, Linear: False ]
+18:41:31 [Event] TextureRenderEvent [Blueprint: blueprint_001, Side: Back, TimeMs: 3, IgnoreLayerVisibility: True, Scaling: 1, Bleeding: 0, Linear: False ]
+18:41:32 [History] Push: SetNewItem
+18:41:32 [Event] SetItemNewEvent
+18:41:32 [Event] TextureRenderEvent [Blueprint: blueprint_001, Side: Front, TimeMs: 12, IgnoreLayerVisibility: True, Scaling: 1, Bleeding: 0, Linear: False ]
+18:41:32 [Event] TextureRenderEvent [Blueprint: blueprint_001, Side: Back, TimeMs: 4, IgnoreLayerVisibility: True, Scaling: 1, Bleeding: 0, Linear: False ]
+18:41:32 [History] Push: SetNewItem
+18:41:32 [Event] SetItemNewEvent
+18:41:32 [Event] TextureRenderEvent [Blueprint: blueprint_001, Side: Front, TimeMs: 10, IgnoreLayerVisibility: True, Scaling: 1, Bleeding: 0, Linear: False ]
+18:41:32 [Event] TextureRenderEvent [Blueprint: blueprint_001, Side: Back, TimeMs: 4, IgnoreLayerVisibility: True, Scaling: 1, Bleeding: 0, Linear: False ]
+18:41:34 [History] Push: UIScreenSwitch
+18:41:34 [Event] ScreenSwitchEvent [Screen: Variables]
+18:41:34 [AnalyticsGA] Event request: general:switch_screen:Variables
+18:41:35 [Event] ScreenSwitchFinishEvent
+18:41:36 [History] Push: VariableNew
+18:41:36 [Event] VariableNewEvent [Variable: variable_001]
+18:41:49 [History] Push: UIScreenSwitch
+18:41:49 [Event] ScreenSwitchEvent [Screen: Export]
+18:41:49 [AnalyticsGA] Event request: general:switch_screen:Export
+18:41:50 [Event] ScreenSwitchFinishEvent
+18:41:55 [Event] CursorScreenExitEvent
+18:41:59 [History] Push: UIScreenSwitch
+18:41:59 [Event] ScreenSwitchEvent [Screen: BlueprintEditor]
+18:41:59 [AnalyticsGA] Event request: general:switch_screen:BlueprintEditor
+18:41:59 [Event] ScreenSwitchFinishEvent
+18:42:01 [History] Push: UIScreenSwitch
+18:42:01 [Event] ScreenSwitchEvent [Screen: BlueprintManager]
+18:42:01 [AnalyticsGA] Event request: general:switch_screen:BlueprintManager
+18:42:01 [History] Push: UIBlueprintSelectBlueprint (Composite)
+18:42:01 [Event] BlueprintScreenSelectBlueprintEvent [Blueprint: ]
+18:42:02 [Event] ScreenSwitchFinishEvent
+18:42:02 [History] Push: UIBlueprintSelectBlueprint
+18:42:02 [Event] BlueprintScreenSelectBlueprintEvent [Blueprint: blueprint_001]
+18:42:02 [History] Push: UIScreenSwitch (Composite)
+18:42:02 [Event] ScreenSwitchEvent [Screen: BlueprintEditor]
+18:42:02 [AnalyticsGA] Event request: general:switch_screen:BlueprintEditor
+18:42:02 [Event] TextureRenderEvent [Blueprint: blueprint_001, Side: Front, TimeMs: 16, IgnoreLayerVisibility: False, Scaling: 1, Bleeding: 0, Linear: False ]
+18:42:02 [Event] TextureRenderEvent [Blueprint: blueprint_001, Side: Back, TimeMs: 4, IgnoreLayerVisibility: False, Scaling: 1, Bleeding: 0, Linear: False ]
+18:42:03 [Event] ScreenSwitchFinishEvent
+18:42:06 [Event] CursorScreenExitEvent
+18:42:13 [Event] CursorScreenExitEvent
+18:42:16 [History] Push: BlueprintNewLayer
+18:42:16 [Event] BlueprintLayerNewEvent [Layer: layer_001]
+18:42:16 [History] Push: UIBlueprintSelectLayer (Composite)
+18:42:16 [Event] BlueprintScreenSelectLayerEvent [Layer: layer_001]
+18:42:16 [Event] BlueprintScreenRenameSelectedEvent [Layer: layer_001]
+18:42:16 [History] Push: BlueprintLayerSort (Composite)
+18:42:16 [Event] BlueprintLayerSortEvent [Layer: layer_001, Index: 0]
+18:42:16 [Event] TextureRenderEvent [Blueprint: blueprint_001, Side: Front, TimeMs: 6, IgnoreLayerVisibility: False, Scaling: 1, Bleeding: 0, Linear: False ]
+18:42:21 [Event] BlueprintScreenPanelMouseHoverEvent [Panel: text_top, IsHovering: True]
+18:42:21 [Event] BlueprintScreenPanelMouseHoverEvent [Panel: text_top, IsHovering: False]
+18:42:21 [Event] BlueprintScreenPanelMouseHoverEvent [Panel: logo, IsHovering: True]
+18:42:21 [Event] BlueprintScreenPanelMouseHoverEvent [Panel: logo, IsHovering: False]
+18:42:21 [Event] BlueprintScreenPanelMouseHoverEvent [Panel: color, IsHovering: True]
+18:42:21 [Event] BlueprintScreenPanelMouseHoverEvent [Panel: color, IsHovering: False]
+18:42:21 [History] Push: BlueprintLayerRename
+18:42:21 [Event] BlueprintLayerRenameEvent [Layer: 的撒]
+18:42:22 [Event] BlueprintScreenPanelMouseHoverEvent [Panel: border, IsHovering: True]
+18:42:22 [Event] BlueprintScreenPanelMouseHoverEvent [Panel: border, IsHovering: False]
+18:42:22 [Event] BlueprintScreenPanelMouseHoverEvent [Panel: color, IsHovering: True]
+18:42:22 [Event] BlueprintScreenPanelMouseHoverEvent [Panel: color, IsHovering: False]
+18:42:22 [Event] BlueprintScreenPanelMouseHoverEvent [Panel: logo, IsHovering: True]
+18:42:22 [Event] BlueprintScreenPanelMouseHoverEvent [Panel: logo, IsHovering: False]
+18:42:22 [Event] BlueprintScreenPanelMouseHoverEvent [Panel: text_bottom, IsHovering: True]
+18:42:22 [Event] BlueprintScreenPanelMouseHoverEvent [Panel: text_bottom, IsHovering: False]
+18:42:22 [Event] BlueprintScreenPanelMouseHoverEvent [Panel: text_top, IsHovering: True]
+18:42:22 [Event] BlueprintScreenPanelMouseHoverEvent [Panel: text_top, IsHovering: False]
+18:42:23 [History] Push: UIBlueprintToggleLayer
+18:42:23 [Event] BlueprintScreenToggleLayerVisibilityEvent [Layer: 的撒, IsVisible: False]
+18:42:23 [Event] TextureRenderEvent [Blueprint: blueprint_001, Side: Front, TimeMs: 3, IgnoreLayerVisibility: False, Scaling: 1, Bleeding: 0, Linear: False ]
+18:42:23 [Event] TextureRenderEvent [Blueprint: blueprint_001, Side: Back, TimeMs: 2, IgnoreLayerVisibility: False, Scaling: 1, Bleeding: 0, Linear: False ]
+18:42:24 [History] Push: UIBlueprintToggleLayer
+18:42:24 [Event] BlueprintScreenToggleLayerVisibilityEvent [Layer: 的撒, IsVisible: True]
+18:42:24 [Event] TextureRenderEvent [Blueprint: blueprint_001, Side: Front, TimeMs: 6, IgnoreLayerVisibility: False, Scaling: 1, Bleeding: 0, Linear: False ]
+18:42:24 [Event] TextureRenderEvent [Blueprint: blueprint_001, Side: Back, TimeMs: 2, IgnoreLayerVisibility: False, Scaling: 1, Bleeding: 0, Linear: False ]
+18:42:26 [History] Push: UIBlueprintSelectLayer
+18:42:26 [Event] BlueprintScreenSelectLayerEvent [Layer: default_front]
+18:42:28 [Event] BlueprintScreenPanelMouseHoverEvent [Panel: text_top, IsHovering: True]
+18:42:28 [History] Push: UIBlueprintSelectPanel
+18:42:28 [Event] BlueprintScreenSelectPanelEvent [Panel: text_top]
+18:42:28 [History] Push: UIBlueprintSelectLayer
+18:42:28 [Event] BlueprintScreenSelectLayerEvent [Layer: ]
+18:42:29 [Event] BlueprintScreenPanelMouseHoverEvent [Panel: text_top, IsHovering: False]
+18:42:29 [Event] BlueprintScreenPanelMouseHoverEvent [Panel: text_bottom, IsHovering: True]
+18:42:29 [Event] BlueprintScreenPanelMouseHoverEvent [Panel: text_bottom, IsHovering: False]
+18:42:29 [Event] BlueprintScreenPanelMouseHoverEvent [Panel: text_top, IsHovering: True]
+18:42:29 [Event] BlueprintScreenPanelMouseHoverEvent [Panel: text_top, IsHovering: False]
+18:42:30 [Event] BlueprintScreenPanelMouseHoverEvent [Panel: text_top, IsHovering: True]
+18:42:30 [Event] BlueprintScreenPanelMouseHoverEvent [Panel: text_top, IsHovering: False]
+18:42:30 [Event] BlueprintScreenPanelMouseHoverEvent [Panel: text_bottom, IsHovering: True]
+18:42:31 [Event] BlueprintScreenPanelMouseHoverEvent [Panel: text_bottom, IsHovering: False]
+18:42:31 [Event] BlueprintScreenPanelMouseHoverEvent [Panel: text_top, IsHovering: True]
+18:42:31 [Event] BlueprintScreenPanelMouseHoverEvent [Panel: text_top, IsHovering: False]
+18:42:31 [Event] BlueprintScreenPanelMouseHoverEvent [Panel: text_top, IsHovering: True]
+18:42:31 [Event] BlueprintScreenPanelMouseHoverEvent [Panel: text_top, IsHovering: False]
+18:42:31 [Event] BlueprintScreenPanelMouseHoverEvent [Panel: text_bottom, IsHovering: True]
+18:42:32 [Event] BlueprintScreenPanelMouseHoverEvent [Panel: text_bottom, IsHovering: False]
+18:42:32 [Event] BlueprintScreenPanelMouseHoverEvent [Panel: logo, IsHovering: True]
+18:42:32 [History] Push: UIBlueprintSelectPanel
+18:42:32 [Event] BlueprintScreenSelectPanelEvent [Panel: logo]
+18:42:34 [Event] BlueprintScreenPanelMouseHoverEvent [Panel: logo, IsHovering: False]
+18:42:34 [Event] BlueprintScreenPanelMouseHoverEvent [Panel: color, IsHovering: True]
+18:42:35 [History] Push: UIBlueprintSelectPanel
+18:42:35 [Event] BlueprintScreenSelectPanelEvent [Panel: color]
+18:42:37 [History] Push: BlueprintPanelSetData
+18:42:37 [Event] BlueprintPanelSetDataEvent [Panel: color, ID: panel_editable, Localization: , Data: True]
+18:42:37 [Event] TextureRenderEvent [Blueprint: blueprint_001, Side: Front, TimeMs: 4, IgnoreLayerVisibility: False, Scaling: 1, Bleeding: 0, Linear: False ]
+18:42:40 [Event] BlueprintScreenPanelMouseHoverEvent [Panel: color, IsHovering: False]
+18:42:40 [Event] BlueprintScreenPanelMouseHoverEvent [Panel: border, IsHovering: True]
+18:42:41 [Event] BlueprintScreenPanelMouseHoverEvent [Panel: border, IsHovering: False]
+18:42:41 [Event] BlueprintScreenPanelMouseHoverEvent [Panel: border, IsHovering: True]
+18:42:41 [Event] BlueprintScreenPanelMouseHoverEvent [Panel: border, IsHovering: False]
+18:42:41 [Event] BlueprintScreenPanelMouseHoverEvent [Panel: color, IsHovering: True]
+18:42:41 [Event] BlueprintScreenPanelMouseHoverEvent [Panel: color, IsHovering: False]
+18:42:41 [Event] BlueprintScreenPanelMouseHoverEvent [Panel: text_bottom, IsHovering: True]
+18:42:41 [Event] BlueprintScreenPanelMouseHoverEvent [Panel: text_bottom, IsHovering: False]
+18:42:41 [Event] BlueprintScreenPanelMouseHoverEvent [Panel: text_top, IsHovering: True]
+18:42:41 [Event] BlueprintScreenPanelMouseHoverEvent [Panel: text_top, IsHovering: False]
+18:42:41 [Event] CursorScreenExitEvent
+18:42:43 [AnalyticsGA] Event request: project:backup
+18:42:43 [Project] Backup
+18:42:43 [Event] ProjectBackupEvent
+18:42:43 [AnalyticsGA] Event request: project:work_time:87
+18:42:43 [AnalyticsGA] Event request: project:idle_time:5
+18:42:43 [AnalyticsGA] Event request: project:total_time:92
+18:42:43 [AnalyticsGA] Event request: project:close
+18:42:43 [Project] Close (ignore unsaved: True)
